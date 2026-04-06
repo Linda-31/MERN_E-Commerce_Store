@@ -49,8 +49,8 @@ function ContactMessages() {
             <tr>
               <th>Client Identity</th>
               <th>Subject & Inquiry</th>
-              <th>Date Received</th>
-              <th>Actions</th>
+              <th className="text-center">Date Received</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -67,12 +67,12 @@ function ContactMessages() {
                   </td>
                   <td>
                     <div style={{ fontWeight: '800', color: '#e64e4e' }}>{msg.subject}</div>
-                    <p style={{ fontSize: '13px', color: '#555', margin: '5px 0 0', maxWidth: '500px' }}>{msg.message}</p>
+                    <p style={{ fontSize: '13px', color: '#555', margin: '5px 0 0' }}>{msg.message}</p>
                   </td>
-                  <td style={{ fontSize: '13px' }}>{new Date(msg.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
-                  <td>
-                    <div className="d-flex gap-2">
-                       <button className="btn btn-sm btn-outline-danger border-0" onClick={() => handleDelete(msg._id)}>
+                  <td className="text-center" style={{ fontSize: '13px' }}>{new Date(msg.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                  <td className="text-center">
+                    <div className="d-flex justify-content-center gap-2">
+                       <button className="btn btn-sm btn-outline-danger border-0" title="Archive" onClick={() => handleDelete(msg._id)}>
                         <i className="bi bi-archive"></i>
                        </button>
                     </div>

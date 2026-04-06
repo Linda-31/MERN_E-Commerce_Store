@@ -392,8 +392,9 @@ function Shop() {
                                                     </span>
                                                 )}
                                             </div>
-                                            <div style={{ marginTop: '10px', opacity: 0.8 }}>
-                                                <StarRating />
+                                            <div style={{ marginTop: '10px', opacity: 0.8, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+                                                <StarRating staticRating={product.rating || 0} />
+                                                <span style={{ fontSize: '11px', color: '#888', fontWeight: 'bold' }}>({product.numReviews || 0})</span>
                                             </div>
                                         </div>
                                     </motion.div>

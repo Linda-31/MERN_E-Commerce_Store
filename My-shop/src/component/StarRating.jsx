@@ -10,22 +10,39 @@ function StarRating({ staticRating }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const rating = staticRating !== undefined ? staticRating : Math.floor(Math.random() * 11) / 2; 
+  // Use provided rating or fallback to a default (0 instead of random to avoid "flicker")
+  const rating = staticRating !== undefined ? staticRating : 0; 
 
   const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 !== 0;
-  const totalStars = 5;
+  const hasHalfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-  const starStyle = { fontSize: isMobile ? "12px" : "18px", margin: "0 1px" };
+  const starStyle = { 
+    fontSize: isMobile ? "14px" : "18px", 
+    margin: "0",
+    color: "#ffc107" // Standard gold color for stars
+  };
+
+  const emptyStarStyle = {
+    ...starStyle,
+    color: "#e4e5e9" // Light grey for empty stars to make them distinct
+  };
 
   return (
-    <div className="star-rating" style={{ display: 'flex', alignItems: 'center' }}>
+    <div className="star-rating d-flex align-items-center">
+      {/* Full Stars */}
       {[...Array(fullStars)].map((_, i) => (
-        <span key={`full-${i}`} className="text-warning" style={starStyle}>&#9733;</span> 
+        <span key={`full-${i}`} className="material-icons" style={starStyle}>star</span>
       ))}
-      {halfStar && <span className="text-warning" style={starStyle}>&#9733;</span>} 
-      {[...Array(totalStars - fullStars - (halfStar ? 1 : 0))].map((_, i) => (
-        <span key={`empty-${i}`} className="text-warning" style={starStyle}>&#9734;</span> 
+      
+      {/* Half Star */}
+      {hasHalfStar && (
+        <span className="material-icons" style={starStyle}>star_half</span>
+      )}
+      
+      {/* Empty Stars */}
+      {[...Array(emptyStars)].map((_, i) => (
+        <span key={`empty-${i}`} className="material-icons" style={emptyStarStyle}>star_border</span>
       ))}
     </div>
   );

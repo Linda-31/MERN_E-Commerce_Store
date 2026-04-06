@@ -48,9 +48,9 @@ function NewsletterSubscribers() {
           <thead>
             <tr>
               <th>Subscriber Email</th>
-              <th>Subscription Date</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th className="text-center">Subscription Date</th>
+              <th className="text-center">Status</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -62,8 +62,8 @@ function NewsletterSubscribers() {
               subscribers.map((sub) => (
                 <tr key={sub._id}>
                   <td style={{ fontWeight: '700', fontSize: '15px' }}>{sub.email}</td>
-                  <td style={{ fontSize: '13px' }}>{new Date(sub.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</td>
-                  <td>
+                  <td className="text-center" style={{ fontSize: '13px' }}>{new Date(sub.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</td>
+                  <td className="text-center">
                     <span style={{ 
                         padding: '6px 14px', 
                         borderRadius: '50px', 
@@ -77,9 +77,9 @@ function NewsletterSubscribers() {
                       Subscribed
                     </span>
                   </td>
-                  <td>
-                    <div className="d-flex gap-2">
-                       <button className="btn btn-sm btn-outline-danger border-0" onClick={() => handleDelete(sub._id)}>
+                  <td className="text-center">
+                    <div className="d-flex justify-content-center gap-2">
+                       <button className="btn btn-sm btn-outline-danger border-0" title="Remove" onClick={() => handleDelete(sub._id)}>
                         <i className="bi bi-person-x"></i>
                        </button>
                     </div>

@@ -37,16 +37,22 @@ const SalesOverviewChart = () => {
   }, []);
 
   return (
-    <div style={{ width: '100%', height: 400, backgroundColor: '#fff', marginLeft: '40px', padding: '1rem', borderRadius: '8px', boxShadow: '0 2px 6px rgba(0,0,0,0.1)' }}>
-      <h5>Weekly Sales Overview</h5>
+    <div style={{ width: '100%', height: '100%' }}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={weeklyData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="week" />
-          <YAxis />
-          <Tooltip formatter={(value) => `₹${value.toFixed(2)}`} />
-          <Legend />
-          <Line type="monotone" dataKey="sales" stroke="#22a3a4" strokeWidth={2} activeDot={{ r: 8 }} />
+        <LineChart data={weeklyData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+          <XAxis dataKey="week" tick={{ fontSize: 11, fontFamily: "'Jost', sans-serif", fill: '#888' }} />
+          <YAxis tick={{ fontSize: 11, fontFamily: "'Jost', sans-serif", fill: '#888' }} />
+          <Tooltip
+            formatter={(value) => [`₹${value.toLocaleString('en-IN')}`, 'Revenue']}
+            contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 8px 25px rgba(0,0,0,0.1)', fontSize: '12px', fontFamily: "'Jost', sans-serif" }}
+          />
+          <Legend
+            iconType="circle"
+            iconSize={8}
+            wrapperStyle={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.5px', fontFamily: "'Jost', sans-serif" }}
+          />
+          <Line type="monotone" dataKey="sales" name="Weekly Revenue" stroke="#e64e4e" strokeWidth={2.5} dot={{ fill: '#e64e4e', r: 4, strokeWidth: 0 }} activeDot={{ r: 7, fill: '#1a1a2e', stroke: '#e64e4e', strokeWidth: 2 }} />
         </LineChart>
       </ResponsiveContainer>
     </div>

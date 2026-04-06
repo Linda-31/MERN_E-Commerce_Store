@@ -59,7 +59,7 @@ const AddProduct = () => {
             <Toaster richColors position="top-right" />
             <div className="text-head">
                 CURATE NEW PIECE
-                <span>Artisanal Inventory Curation</span>
+                <span className="d-none d-sm-inline">Artisanal Inventory Curation</span>
             </div>
 
             <div className="admin-form-container mx-auto">
@@ -137,8 +137,8 @@ const AddProduct = () => {
                             <textarea name="description" className="form-control" rows={4} placeholder="Describe the craftsmanship and soul of this piece..." value={formData.description} onChange={handleInputChange}></textarea>
                         </div>
 
-                        <div className="col-12 text-end mt-5">
-                            <button type="submit" className="btn-admin btn-admin-primary px-5">CURATE COLLECTION PIECE</button>
+                        <div className="col-12 mt-5">
+                            <button type="submit" className="btn-admin btn-admin-primary w-100">CURATE COLLECTION PIECE</button>
                         </div>
                     </div>
                 </form>

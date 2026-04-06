@@ -47,7 +47,7 @@ const BlogList = () => {
             
             <div className="text-head">
                 JOURNAL & MAGAZINE
-                <Link to="/add-blog" className="btn-admin btn-admin-primary" style={{ padding: '10px 25px' }}>
+                <Link to="/add-blog" className="btn-admin btn-admin-primary w-100 w-sm-auto mt-3 mt-sm-0 text-center" style={{ padding: '10px 25px' }}>
                     + CREATE STORY
                 </Link>
             </div>
@@ -56,10 +56,10 @@ const BlogList = () => {
                 <table className="custom-table">
                     <thead>
                         <tr>
-                            <th>Hero Visual</th>
+                            <th className="text-center">Hero Visual</th>
                             <th>Artisanal Narrative</th>
-                            <th>Lead Author</th>
-                            <th>Actions</th>
+                            <th className="text-center">Lead Author</th>
+                            <th className="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,8 +67,8 @@ const BlogList = () => {
                              <tr><td colSpan="4" className="text-center py-5 text-muted">No journal stories published in the collection</td></tr>
                         ) : (
                           blogs.map((blog) => (
-                              <tr key={blog._id}>
-                                  <td>
+                               <tr key={blog._id}>
+                                  <td className="text-center">
                                       <img src={blog.image} alt={blog.title} style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '2px' }} />
                                   </td>
                                   <td>
@@ -77,13 +77,13 @@ const BlogList = () => {
                                         {blog.category} <span style={{ color: '#ccc', margin: '0 5px' }}>|</span> <span style={{ color: '#888', fontWeight: '400' }}>{new Date(blog.date).toLocaleDateString()}</span>
                                       </div>
                                   </td>
-                                  <td style={{ fontSize: '13px', fontWeight: '600' }}>{blog.author}</td>
-                                  <td>
-                                      <div className="d-flex gap-2">
-                                          <Link to={`/blogs/edit/${blog._id}`} className="btn btn-sm btn-outline-dark border-0">
+                                  <td className="text-center" style={{ fontSize: '13px', fontWeight: '600' }}>{blog.author}</td>
+                                  <td className="text-center">
+                                      <div className="d-flex justify-content-center gap-2">
+                                          <Link to={`/blogs/edit/${blog._id}`} className="btn btn-sm btn-outline-dark border-0" title="Edit">
                                               <i className="bi bi-pencil-square"></i>
                                           </Link>
-                                          <button onClick={() => handleDelete(blog._id)} className="btn btn-sm btn-outline-danger border-0">
+                                          <button onClick={() => handleDelete(blog._id)} className="btn btn-sm btn-outline-danger border-0" title="Delete">
                                               <i className="bi bi-trash3"></i>
                                           </button>
                                       </div>

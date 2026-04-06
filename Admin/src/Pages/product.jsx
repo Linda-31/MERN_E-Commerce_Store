@@ -63,71 +63,65 @@ function Product() {
       <Toaster richColors position="top-right" />
       
       <div className="text-head">
-        ARTISANAL INVENTORY
-        <div className="d-flex gap-3">
+        <div>
+          ARTISANAL INVENTORY
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Curating the collections</span>
+        </div>
+        <div className="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto mt-3 mt-md-0">
           <input
             type="search"
             className="form-control"
-            style={{ width: '300px', fontSize: '13px' }}
-            placeholder="SEARCH INVENTORY..."
+            style={{ minWidth: '180px', fontSize: '13px' }}
+            placeholder="SEARCH..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="btn-admin btn-admin-primary" style={{ padding: '10px 25px' }} onClick={() => navigate("/add-product")}>
+          <button className="btn-admin btn-admin-primary w-100" style={{ padding: '8px 20px', fontSize: '11px' }} onClick={() => navigate("/add-product")}>
             + curated piece
           </button>
         </div>
       </div>
 
       <div className="table-wrap">
-        <table className="custom-table">
+        <table className="custom-table responsive-card-table">
           <thead>
             <tr>
-              <th>Visual</th>
+              <th className="text-center">Visual</th>
               <th>Product Identity</th>
-              <th>Price</th>
-              <th>Inventory Status</th>
-              <th>Actions</th>
+              <th className="text-center">Price</th>
+              <th className="text-center">Inventory Status</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td>
+                <td className="text-center" data-label="Visual">
                   <img
                     src={product.image}
                     alt={product.title}
-                    style={{ width: "50px", height: "65px", objectFit: "cover", borderRadius: "2px" }}
+                    className="product-visual"
                   />
                 </td>
-                <td>
-                   <div style={{ fontWeight: '700' }}>{product.title}</div>
-                   <div style={{ fontSize: '11px', color: '#888' }}>{new Date(product.createdAt).toLocaleDateString()}</div>
+                <td data-label="Identity">
+                   <div className="product-title-bold">{product.title}</div>
+                   <div className="product-date-sub">{new Date(product.createdAt).toLocaleDateString()}</div>
                 </td>
-                <td style={{ fontWeight: '800' }}>₹{product.price.toLocaleString()}</td>
-                <td>
-                  <div className="d-flex align-items-center gap-3">
-                    <span style={{ fontSize: '12px', minWidth: '40px' }}>{product.stock}</span>
-                    <div className="progress flex-grow-1" style={{ height: '3px', maxWidth: '100px' }}>
-                      <div
-                        className="progress-bar"
-                        style={{
-                          width: `${Math.min((product.stock / 500) * 100, 100)}%`,
-                          backgroundColor: product.stock > 100 ? '#000' : '#e64e4e'
-                        }}
-                      />
-                    </div>
+                <td className="text-center" data-label="Price" style={{ fontWeight: '800' }}>₹{product.price.toLocaleString()}</td>
+                <td className="text-center" data-label="Stock">
+                  <div className="d-flex align-items-center justify-content-center gap-2">
+                    <span style={{ fontSize: '12px' }}>{product.stock} units</span>
                   </div>
                 </td>
-                <td>
-                  <div className="d-flex gap-2">
-                    <button className="btn btn-sm btn-outline-dark border-0" onClick={() => navigate(`/products/${product._id}`)}>
+                <td className="text-center" data-label="Actions">
+                  <div className="d-flex justify-content-center gap-2">
+                    <button className="btn btn-sm btn-outline-dark border-0 p-2" title="View" onClick={() => navigate(`/products/${product._id}`)}>
                       <i className="bi bi-eye"></i>
                     </button>
-                    <button className="btn btn-sm btn-outline-dark border-0" onClick={() => navigate(`/products/edit/${product._id}`)}>
+                    <button className="btn btn-sm btn-outline-dark border-0 p-2" title="Edit" onClick={() => navigate(`/products/edit/${product._id}`)}>
                       <i className="bi bi-pencil-square"></i>
                     </button>
-                    <button className="btn btn-sm btn-outline-danger border-0" onClick={() => handleDelete(product._id)}>
+                    <button className="btn btn-sm btn-outline-danger border-0 p-2" title="Delete" onClick={() => handleDelete(product._id)}>
                       <i className="bi bi-trash3"></i>
                     </button>
                   </div>

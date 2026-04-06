@@ -529,9 +529,12 @@ function Home() {
                         <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>New Arrival</span>
                       </div>
                       <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#000', margin: '0 0 5px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{product.title}</h4>
-                      <div className="d-flex align-items-center gap-3">
-                         <span style={{ fontSize: '16px', fontWeight: '800', color: '#e64e4e' }}>₹{product.price}</span>
-                         <StarRating />
+                      <div className="d-flex flex-column gap-1">
+                          <span style={{ fontSize: '16px', fontWeight: '800', color: '#e64e4e' }}>₹{product.price}</span>
+                          <div className="d-flex align-items-center gap-2">
+                             <StarRating staticRating={product.rating || 0} />
+                             <span style={{ fontSize: '10px', color: '#888', fontWeight: '700' }}>({product.numReviews || 0})</span>
+                          </div>
                       </div>
                     </div>
                   </motion.div>

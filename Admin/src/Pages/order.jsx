@@ -71,13 +71,16 @@ function Order() {
       <Toaster richColors position="top-right" />
       
       <div className="text-head">
-        KUSHI ORDERS
-        <div className="d-flex gap-3">
+        <div>
+          KUSHI ORDERS
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Managing boutique sales</span>
+        </div>
+        <div className="d-flex w-100 w-md-auto mt-3 mt-md-0">
            <input
               type="search"
-              className="form-control"
-              style={{ width: '300px', fontSize: '13px' }}
-              placeholder="SEARCH ORDERS..."
+              className="form-control w-100"
+              style={{ minWidth: '200px', fontSize: '13px' }}
+              placeholder="SEARCH..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -88,12 +91,12 @@ function Order() {
         <table className="custom-table">
           <thead>
             <tr>
-              <th>Concierge ID</th>
+              <th className="text-center">Concierge ID</th>
               <th>Client Identity</th>
-              <th>Curated Date</th>
-              <th>Valuation</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th className="text-center">Curated Date</th>
+              <th className="text-center">Valuation</th>
+              <th className="text-center">Status</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -104,14 +107,14 @@ function Order() {
             ) : (
               orders.map((order) => (
                 <tr key={order._id}>
-                  <td style={{ fontWeight: '800', color: '#000', letterSpacing: '1px' }}>#{order.orderId || order._id.slice(-6).toUpperCase()}</td>
+                  <td className="text-center" style={{ fontWeight: '800', color: '#000', letterSpacing: '1px' }}>#{order.orderId || order._id.slice(-6).toUpperCase()}</td>
                   <td>
                     <div style={{ fontWeight: '600' }}>{order.user?.fullName || "Private Client"}</div>
                     <div style={{ fontSize: '11px', color: '#888' }}>{order.user?.email || "No email available"}</div>
                   </td>
-                  <td style={{ fontSize: '13px' }}>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                  <td style={{ fontWeight: '800' }}>₹{order.totalAmount?.toLocaleString()}</td>
-                  <td>
+                  <td className="text-center" style={{ fontSize: '13px' }}>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                  <td className="text-center" style={{ fontWeight: '800' }}>₹{order.totalAmount?.toLocaleString()}</td>
+                  <td className="text-center">
                     <span style={{ 
                         padding: '6px 14px', 
                         borderRadius: '50px', 
@@ -124,12 +127,12 @@ function Order() {
                       {order.status || "Pending"}
                     </span>
                   </td>
-                  <td>
-                    <div className="d-flex gap-2">
-                       <button className="btn btn-sm btn-outline-dark border-0" onClick={() => navigate(`/orders/${order._id}`)}>
+                  <td className="text-center">
+                    <div className="d-flex justify-content-center gap-2">
+                       <button className="btn btn-sm btn-outline-dark border-0" title="View" onClick={() => navigate(`/orders/${order._id}`)}>
                          <i className="bi bi-eye"></i>
                        </button>
-                       <button className="btn btn-sm btn-outline-danger border-0" onClick={() => handleDelete(order._id)}>
+                       <button className="btn btn-sm btn-outline-danger border-0" title="Delete" onClick={() => handleDelete(order._id)}>
                         <i className="bi bi-x-circle"></i>
                        </button>
                     </div>

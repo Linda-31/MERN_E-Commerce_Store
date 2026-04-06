@@ -153,7 +153,10 @@ function Productlist() {
                   </h4>
                   <div className="d-flex align-items-center justify-content-between">
                      <span style={{ fontSize: '17px', fontWeight: '800', color: '#e64e4e', fontFamily: "'Jost', sans-serif" }}>₹{product.price}</span>
-                     <StarRating />
+                     <div className="d-flex align-items-center gap-1">
+                        <StarRating staticRating={product.rating || 0} />
+                        <span style={{ fontSize: '10px', color: '#888', fontWeight: '700' }}>({product.numReviews || 0})</span>
+                     </div>
                   </div>
                 </div>
               </motion.div>

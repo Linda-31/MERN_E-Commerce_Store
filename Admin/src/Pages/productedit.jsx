@@ -96,7 +96,7 @@ function ProductEdit() {
       
       <div className="text-head">
         REFINE PIECE
-        <button onClick={() => navigate(-1)} className="btn btn-sm btn-outline-dark border-0" style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}>
+        <button onClick={() => navigate(-1)} className="btn btn-sm btn-outline-dark border-0 mt-2 mt-sm-0" style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}>
             <i className="bi bi-arrow-left me-2"></i> BACK TO INVENTORY
         </button>
       </div>
@@ -168,8 +168,8 @@ function ProductEdit() {
                     </div>
                 </div>
 
-                <div className="mt-5 text-end">
-                    <button type="submit" className="btn-admin btn-admin-primary px-5">UPDATE CURATION</button>
+                <div className="mt-5">
+                    <button type="submit" className="btn-admin btn-admin-primary w-100">UPDATE CURATION</button>
                 </div>
             </div>
           </div>

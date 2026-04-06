@@ -57,13 +57,16 @@ function User() {
       <Toaster richColors position="top-right" />
       
       <div className="text-head">
-        CLIENT CURATION
-        <div className="d-flex gap-3">
+        <div>
+          CLIENT CURATION
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Artisanal user insights</span>
+        </div>
+        <div className="d-flex w-100 w-md-auto mt-3 mt-md-0">
            <input
               type="search"
-              className="form-control"
-              style={{ width: '300px', fontSize: '13px' }}
-              placeholder="SEARCH CLIENTS..."
+              className="form-control w-100"
+              style={{ minWidth: '200px', fontSize: '13px' }}
+              placeholder="SEARCH..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -75,10 +78,10 @@ function User() {
           <thead>
             <tr>
               <th>Curation Name</th>
-              <th>Email Address</th>
-              <th>Concierge Contact</th>
-              <th>Location</th>
-              <th>Actions</th>
+              <th className="text-center">Email Address</th>
+              <th className="text-center">Concierge Contact</th>
+              <th className="text-center">Location</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -88,18 +91,18 @@ function User() {
               users.map(user => (
                 <tr key={user._id}>
                   <td style={{ fontWeight: '700' }}>{user.fullName}</td>
-                  <td className="text-muted">{user.email}</td>
-                  <td>{user.mobile || 'N/A'}</td>
-                  <td style={{ fontSize: '12px' }}>{user.Address || user.deliveryAddress?.city || 'N/A'}</td>
-                  <td>
-                    <div className="d-flex gap-2">
-                      <button className="btn btn-sm btn-outline-dark border-0" onClick={() => navigate(`/users/${user._id}`)}>
+                  <td className="text-center text-muted">{user.email}</td>
+                  <td className="text-center">{user.mobile || 'N/A'}</td>
+                  <td className="text-center" style={{ fontSize: '12px' }}>{user.Address || user.deliveryAddress?.city || 'N/A'}</td>
+                  <td className="text-center">
+                    <div className="d-flex justify-content-center gap-2">
+                      <button className="btn btn-sm btn-outline-dark border-0" title="View" onClick={() => navigate(`/users/${user._id}`)}>
                         <i className="bi bi-eye"></i>
                       </button>
-                      <button className="btn btn-sm btn-outline-dark border-0" onClick={() => navigate(`/users/edit/${user._id}`)}>
+                      <button className="btn btn-sm btn-outline-dark border-0" title="Edit" onClick={() => navigate(`/users/edit/${user._id}`)}>
                         <i className="bi bi-pencil-square"></i>
                       </button>
-                      <button className="btn btn-sm btn-outline-danger border-0" onClick={() => handleDelete(user._id)}>
+                      <button className="btn btn-sm btn-outline-danger border-0" title="Delete" onClick={() => handleDelete(user._id)}>
                         <i className="bi bi-trash3"></i>
                       </button>
                     </div>
