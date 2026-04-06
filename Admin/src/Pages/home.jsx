@@ -129,9 +129,9 @@ function Home() {
                 </div>
                 <div 
                   style={{ 
-                    width: '44px', 
-                    height: '44px', 
-                    borderRadius: '12px', 
+                    width: '38px', 
+                    height: '38px', 
+                    borderRadius: '10px', 
                     background: `${stat.color}15`, 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -139,7 +139,7 @@ function Home() {
                     flexShrink: 0
                   }}
                 >
-                  <i className={`bi ${stat.icon}`} style={{ fontSize: '20px', color: stat.color }}></i>
+                  <i className={`bi ${stat.icon}`} style={{ fontSize: '18px', color: stat.color }}></i>
                 </div>
               </div>
             </div>
@@ -154,7 +154,7 @@ function Home() {
             <h5 className="table-title text-center text-lg-start">
               Weekly Revenue Trend
             </h5>
-            <div style={{ height: '300px', width: '100%', overflow: 'hidden' }}>
+            <div className="chart-container-mobile" style={{ height: '280px', width: '100%', position: 'relative' }}>
               <SalesOverviewChart />
             </div>
           </div>
@@ -189,7 +189,7 @@ function Home() {
                 View All →
               </button>
             </div>
-            <table className="custom-table">
+            <table className="custom-table responsive-card-table">
               <thead>
                 <tr>
                   <th className="text-center">Order ID</th>
@@ -209,18 +209,18 @@ function Home() {
                     const s = getStatusStyle(order.status || "Pending");
                     return (
                       <tr key={order._id} style={{ cursor: 'pointer' }} onClick={() => navigate(`/orders/${order._id}`)}>
-                        <td className="text-center" style={{ fontWeight: '800', color: '#000', letterSpacing: '1px', fontSize: '12px' }}>
+                        <td className="text-center" data-label="ID" style={{ fontWeight: '800', color: '#000', letterSpacing: '1px', fontSize: '12px' }}>
                           #{(order.orderId || order._id.slice(-6)).toUpperCase()}
                         </td>
-                        <td>
+                        <td data-label="Client">
                           <div style={{ fontWeight: '600', fontSize: '13px' }}>{order.user?.fullName || "Private Client"}</div>
-                          <div style={{ fontSize: '11px', color: '#aaa' }}>{order.user?.email || "—"}</div>
+                          <div className="d-none d-sm-block" style={{ fontSize: '11px', color: '#aaa' }}>{order.user?.email || "—"}</div>
                         </td>
-                        <td className="text-center" style={{ fontSize: '12px', color: '#888' }}>
+                        <td className="text-center" data-label="Date" style={{ fontSize: '12px', color: '#888' }}>
                           {new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </td>
-                        <td className="text-center" style={{ fontWeight: '800', fontSize: '13px' }}>₹{(order.totalAmount || 0).toLocaleString('en-IN')}</td>
-                        <td className="text-center">
+                        <td className="text-center" data-label="Total" style={{ fontWeight: '800', fontSize: '13px' }}>₹{(order.totalAmount || 0).toLocaleString('en-IN')}</td>
+                        <td className="text-center" data-label="Status">
                           <span style={{ padding: '5px 12px', borderRadius: '50px', fontSize: '9px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', color: s.color, backgroundColor: s.bg }}>
                             {order.status || "Pending"}
                           </span>
@@ -271,7 +271,7 @@ function Home() {
                         <span style={{ fontSize: '10px', color: '#aaa', marginLeft: '4px' }}>({product.numReviews || 0})</span>
                       </div>
                     </div>
-                    <div style={{ fontWeight: '800', fontSize: '13px', whiteSpace: 'nowrap', color: '#e64e4e' }}>₹{product.price?.toLocaleString('en-IN')}</div>
+                    <div style={{ fontWeight: '800', fontSize: '13px', whiteSpace: 'nowrap', color: '#e64e4e', flexShrink: 0 }}>₹{product.price?.toLocaleString('en-IN')}</div>
                   </div>
                 ))
               )}

@@ -53,7 +53,7 @@ const BlogList = () => {
             </div>
             
             <div className="table-wrap">
-                <table className="custom-table">
+                <table className="custom-table responsive-card-table">
                     <thead>
                         <tr>
                             <th className="text-center">Hero Visual</th>
@@ -68,22 +68,24 @@ const BlogList = () => {
                         ) : (
                           blogs.map((blog) => (
                                <tr key={blog._id}>
-                                  <td className="text-center">
-                                      <img src={blog.image} alt={blog.title} style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '2px' }} />
+                                  <td className="text-center" data-label="Visual">
+                                      <div className="blog-thumb-container mx-auto">
+                                          <img src={blog.image} alt={blog.title} className="blog-visual-thumb" />
+                                      </div>
                                   </td>
-                                  <td>
+                                  <td data-label="Narrative">
                                       <div style={{ fontWeight: '700', fontSize: '15px' }}>{blog.title}</div>
                                       <div style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '5px', ...getCategoryStyle(blog.category) }}>
                                         {blog.category} <span style={{ color: '#ccc', margin: '0 5px' }}>|</span> <span style={{ color: '#888', fontWeight: '400' }}>{new Date(blog.date).toLocaleDateString()}</span>
                                       </div>
                                   </td>
-                                  <td className="text-center" style={{ fontSize: '13px', fontWeight: '600' }}>{blog.author}</td>
-                                  <td className="text-center">
+                                  <td className="text-center" data-label="Author" style={{ fontSize: '13px', fontWeight: '600' }}>{blog.author}</td>
+                                  <td className="text-center" data-label="Actions">
                                       <div className="d-flex justify-content-center gap-2">
-                                          <Link to={`/blogs/edit/${blog._id}`} className="btn btn-sm btn-outline-dark border-0" title="Edit">
+                                          <Link to={`/blogs/edit/${blog._id}`} className="btn btn-sm btn-outline-dark border-0 p-2" title="Edit">
                                               <i className="bi bi-pencil-square"></i>
                                           </Link>
-                                          <button onClick={() => handleDelete(blog._id)} className="btn btn-sm btn-outline-danger border-0" title="Delete">
+                                          <button onClick={() => handleDelete(blog._id)} className="btn btn-sm btn-outline-danger border-0 p-2" title="Delete">
                                               <i className="bi bi-trash3"></i>
                                           </button>
                                       </div>

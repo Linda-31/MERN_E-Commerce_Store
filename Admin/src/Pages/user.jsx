@@ -74,7 +74,7 @@ function User() {
       </div>
 
       <div className="table-wrap">
-        <table className="custom-table">
+        <table className="custom-table responsive-card-table">
           <thead>
             <tr>
               <th>Curation Name</th>
@@ -90,19 +90,19 @@ function User() {
             ) : (
               users.map(user => (
                 <tr key={user._id}>
-                  <td style={{ fontWeight: '700' }}>{user.fullName}</td>
-                  <td className="text-center text-muted">{user.email}</td>
-                  <td className="text-center">{user.mobile || 'N/A'}</td>
-                  <td className="text-center" style={{ fontSize: '12px' }}>{user.Address || user.deliveryAddress?.city || 'N/A'}</td>
-                  <td className="text-center">
+                  <td data-label="Name" style={{ fontWeight: '700' }}>{user.fullName}</td>
+                  <td data-label="Email" className="text-center text-muted">{user.email}</td>
+                  <td data-label="Contact" className="text-center">{user.mobile || 'N/A'}</td>
+                  <td data-label="City" className="text-center" style={{ fontSize: '12px' }}>{user.Address || user.deliveryAddress?.city || 'N/A'}</td>
+                  <td data-label="Actions" className="text-center">
                     <div className="d-flex justify-content-center gap-2">
-                      <button className="btn btn-sm btn-outline-dark border-0" title="View" onClick={() => navigate(`/users/${user._id}`)}>
+                      <button className="btn btn-sm btn-outline-dark border-0 p-2" title="View" onClick={() => navigate(`/users/${user._id}`)}>
                         <i className="bi bi-eye"></i>
                       </button>
-                      <button className="btn btn-sm btn-outline-dark border-0" title="Edit" onClick={() => navigate(`/users/edit/${user._id}`)}>
+                      <button className="btn btn-sm btn-outline-dark border-0 p-2" title="Edit" onClick={() => navigate(`/users/edit/${user._id}`)}>
                         <i className="bi bi-pencil-square"></i>
                       </button>
-                      <button className="btn btn-sm btn-outline-danger border-0" title="Delete" onClick={() => handleDelete(user._id)}>
+                      <button className="btn btn-sm btn-outline-danger border-0 p-2" title="Delete" onClick={() => handleDelete(user._id)}>
                         <i className="bi bi-trash3"></i>
                       </button>
                     </div>

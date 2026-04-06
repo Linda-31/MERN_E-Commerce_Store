@@ -88,7 +88,7 @@ function Order() {
       </div>
 
       <div className="table-wrap">
-        <table className="custom-table">
+        <table className="custom-table responsive-card-table">
           <thead>
             <tr>
               <th className="text-center">Concierge ID</th>
@@ -107,14 +107,14 @@ function Order() {
             ) : (
               orders.map((order) => (
                 <tr key={order._id}>
-                  <td className="text-center" style={{ fontWeight: '800', color: '#000', letterSpacing: '1px' }}>#{order.orderId || order._id.slice(-6).toUpperCase()}</td>
-                  <td>
+                  <td className="text-center" data-label="Order ID" style={{ fontWeight: '800', color: '#000', letterSpacing: '1px' }}>#{order.orderId || order._id.slice(-6).toUpperCase()}</td>
+                  <td data-label="Client">
                     <div style={{ fontWeight: '600' }}>{order.user?.fullName || "Private Client"}</div>
                     <div style={{ fontSize: '11px', color: '#888' }}>{order.user?.email || "No email available"}</div>
                   </td>
-                  <td className="text-center" style={{ fontSize: '13px' }}>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                  <td className="text-center" style={{ fontWeight: '800' }}>₹{order.totalAmount?.toLocaleString()}</td>
-                  <td className="text-center">
+                  <td className="text-center" data-label="Date" style={{ fontSize: '13px' }}>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                  <td className="text-center" data-label="Valuation" style={{ fontWeight: '800' }}>₹{order.totalAmount?.toLocaleString()}</td>
+                  <td className="text-center" data-label="Status">
                     <span style={{ 
                         padding: '6px 14px', 
                         borderRadius: '50px', 
@@ -127,12 +127,12 @@ function Order() {
                       {order.status || "Pending"}
                     </span>
                   </td>
-                  <td className="text-center">
+                  <td className="text-center" data-label="Actions">
                     <div className="d-flex justify-content-center gap-2">
-                       <button className="btn btn-sm btn-outline-dark border-0" title="View" onClick={() => navigate(`/orders/${order._id}`)}>
+                       <button className="btn btn-sm btn-outline-dark border-0 p-2" title="View" onClick={() => navigate(`/orders/${order._id}`)}>
                          <i className="bi bi-eye"></i>
                        </button>
-                       <button className="btn btn-sm btn-outline-danger border-0" title="Delete" onClick={() => handleDelete(order._id)}>
+                       <button className="btn btn-sm btn-outline-danger border-0 p-2" title="Delete" onClick={() => handleDelete(order._id)}>
                         <i className="bi bi-x-circle"></i>
                        </button>
                     </div>

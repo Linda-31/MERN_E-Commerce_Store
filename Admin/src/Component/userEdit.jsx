@@ -97,27 +97,35 @@ function UserEdit() {
 
   return (
     <div style={{
-      padding: isMobile ? '100px 15px 40px' : '100px 40px 40px 280px',
+      padding: isMobile ? '20px 10px 100px' : '0 20px 40px', // Standard desktop padding (0 top, 20 left/right)
       fontFamily: "'Jost', sans-serif",
       backgroundColor: '#fafafa',
       minHeight: '100vh',
-      transition: 'padding 0.3s ease'
+      transition: 'all 0.3s ease'
     }}>
       <Toaster richColors position="top-right" />
       
-      <div style={{ maxWidth: '900px', margin: '0 auto', background: '#fff', borderRadius: '8px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
+      <div style={{ maxWidth: '900px', margin: isMobile ? '0 auto' : '0', background: '#fff', borderRadius: '8px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
         {/* Header Section */}
-        <div style={{ padding: '40px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ 
+          padding: isMobile ? '25px 20px' : '40px', 
+          borderBottom: '1px solid #f0f0f0', 
+          display: 'flex', 
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: isMobile ? 'flex-start' : 'center', 
+          justifyContent: 'space-between',
+          gap: '20px'
+        }}>
            <div>
-             <span style={{ color: '#e64e4e', letterSpacing: '3px', textTransform: 'uppercase', fontSize: '10px', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>User Management</span>
-             <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#000', margin: 0 }}>Edit Profile: {userData.fullName}</h2>
+             <span style={{ color: '#e64e4e', letterSpacing: '3px', textTransform: 'uppercase', fontSize: '9px', fontWeight: 'bold', display: 'block', marginBottom: '5px' }}>User Management</span>
+             <h2 style={{ fontSize: isMobile ? '22px' : '28px', fontWeight: '800', color: '#000', margin: 0 }}>Edit Profile: {userData.fullName}</h2>
            </div>
-           <button onClick={() => navigate(-1)} style={{ background: 'transparent', border: '1px solid #ddd', padding: '10px 20px', fontSize: '11px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', fontFamily: "'Jost', sans-serif" }}>
+           <button onClick={() => navigate(-1)} style={{ background: 'transparent', border: '1px solid #ddd', padding: '8px 16px', fontSize: '10px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', fontFamily: "'Jost', sans-serif" }}>
               Back
            </button>
         </div>
 
-        <form onSubmit={handleSubmit} style={{ padding: '40px' }}>
+        <form onSubmit={handleSubmit} style={{ padding: isMobile ? '25px 20px' : '40px' }}>
           
           {/* Avatar Section */}
           <div style={{ display: 'flex', flexDirection: isVerySmall ? 'column' : 'row', alignItems: isVerySmall ? 'center' : 'flex-start', gap: '30px', marginBottom: '40px' }}>
@@ -224,7 +232,7 @@ function UserEdit() {
                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#e64e4e'}
              >
                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>save</span>
-               Save Changes
+               Update User
              </button>
           </div>
 

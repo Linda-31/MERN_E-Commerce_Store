@@ -241,6 +241,14 @@ body {
   color: #888;
 }
 
+.blog-visual-thumb {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #eee;
+}
+
 /* FORMS */
 .admin-form-container {
   max-width: 900px;
@@ -709,6 +717,12 @@ body {
     width: 80px;
     height: 110px;
     margin-bottom: 10px;
+  }
+
+  .blog-visual-thumb {
+    width: 100px; /* Slightly larger for card view but still refined */
+    height: 65px;
+    margin-bottom: 5px;
   }
 
   .product-title-bold {
