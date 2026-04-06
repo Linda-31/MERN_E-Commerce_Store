@@ -21,57 +21,86 @@ function UserDetails() {
   if (!user) return <p className="text-center mt-5 text-danger">User not found</p>;
 
   return (
-    <div className="container d-flex justify-content-center align-items-center user-details-container" style={{
-      minHeight: '80vh', marginTop: '40px', fontSize: '17px',
-      fontFamily: '"Roboto", sans-serif'
-    }}>
-      <div className="card shadow-lg p-4 user-details-card" style={{ width: '100%', maxWidth: '600px' }}>
-        <div className="row mb-3 justify-content-center">
-          <div className="col-auto">
-            <img
-              src={user.image}
-              alt="User Profile"
-              className="rounded-circle"
-              style={{ width: "100px", height: "100px", objectFit: "cover" }}
-            />
-          </div>
-          <h5 style={{ fontWeight: "600", fontSize: "26px" }} className="text-center mb-4">{user.fullName}</h5>
+    <div className="user-details-page">
+      <div className="text-head">
+        <div>
+          CLIENT PROFILE
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Concierge Access & Identity</span>
         </div>
-        <h3 className=" mb-4" >User Details</h3>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">First Name:</div>
-          <div className="col-7">{user.fullName}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Last Name:</div>
-          <div className="col-7">{user.lastName}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Gender:</div>
-          <div className="col-7">{user.gender}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Email:</div>
-          <div className="col-7">{user.email}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Mobile:</div>
-          <div className="col-7">{user.mobile || 'N/A'}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Address:</div>
-          <div className="col-7">{user.Address || 'N/A'}</div>
-        </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Status:</div>
-          <div className="col-7">
-            {user.status ? user.status.charAt(0).toUpperCase() + user.status.slice(1) : 'N/A'}
+        <button 
+          className="btn btn-sm btn-outline-dark border-0 mt-2 mt-md-0" 
+          onClick={() => window.history.back()}
+          style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}
+        >
+          ← BACK
+        </button>
+      </div>
+
+      <div className="row g-4">
+        {/* Profile Identity Card */}
+        <div className="col-lg-4">
+          <div className="table-wrap text-center py-5">
+            <div className="mb-4 position-relative d-inline-block">
+              <img
+                src={user.image || user.userPic || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                alt={user.fullName}
+                className="rounded-circle shadow-sm"
+                style={{ width: "120px", height: "120px", objectFit: "cover", border: '3px solid #f8f9fa' }}
+              />
+              <span 
+                style={{ 
+                  position: 'absolute', bottom: '5px', right: '5px', width: '20px', height: '20px', 
+                  borderRadius: '50%', background: user.status === 'Active' ? '#2ecc71' : '#e64e4e',
+                  border: '3px solid #fff' 
+                }}
+              ></span>
+            </div>
+            <h3 style={{ fontWeight: "800", fontSize: "24px", marginBottom: '5px' }}>{user.fullName}</h3>
+            <p className="text-mutedSmall mb-4">{user.email}</p>
+            
+            <div className="d-flex justify-content-center gap-2 mt-2">
+               <span style={{ padding: '6px 15px', borderRadius: '50px', fontSize: '10px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', color: user.status === 'Active' ? '#27ae60' : '#e64e4e', backgroundColor: user.status === 'Active' ? 'rgba(39,174,96,0.1)' : 'rgba(230,78,78,0.1)' }}>
+                  {user.status || 'Active'}
+               </span>
+            </div>
           </div>
         </div>
-        <div className="row mb-2">
-          <div className="col-5 fw-semibold">Joining Date:</div>
-          <div className="col-7">
-            {user.joinedAt ? new Date(user.joinedAt).toLocaleDateString() : 'N/A'}
+
+        {/* Detailed Information */}
+        <div className="col-lg-8">
+          <div className="table-wrap h-100">
+            <h5 className="table-title">Personal Credentials</h5>
+            <div className="row g-4 mt-1">
+              <div className="col-md-6">
+                <label className="text-mutedSmall d-block mb-1">Full Legal Name</label>
+                <div className="fw-bold fs-6">{user.fullName} {user.lastName}</div>
+              </div>
+              <div className="col-md-6">
+                <label className="text-mutedSmall d-block mb-1">Gender / Identity</label>
+                <div className="fw-bold fs-6">{user.gender || 'Not Specified'}</div>
+              </div>
+              <div className="col-md-6">
+                <label className="text-mutedSmall d-block mb-1">Concierge Contact</label>
+                <div className="fw-bold fs-6">{user.mobile || '—'}</div>
+              </div>
+              <div className="col-md-6">
+                <label className="text-mutedSmall d-block mb-1">Client Since</label>
+                <div className="fw-bold fs-6">{user.createdAt ? new Date(user.createdAt).toLocaleDateString() : (user.joinedAt ? new Date(user.joinedAt).toLocaleDateString() : 'N/A')}</div>
+              </div>
+              <div className="col-12 border-top pt-4">
+                <label className="text-mutedSmall d-block mb-1">Primary Residence / Delivery</label>
+                <div className="fw-bold fs-6">{user.Address || 'No residency registered'}</div>
+              </div>
+            </div>
+            
+            <div className="mt-5 pt-3 border-top d-flex gap-3">
+               <button className="btn btn-dark px-4 py-2" style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}>
+                  EDIT PROFILE
+               </button>
+               <button className="btn btn-outline-danger px-4 py-2" style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}>
+                  ARCHIVE CLIENT
+               </button>
+            </div>
           </div>
         </div>
       </div>

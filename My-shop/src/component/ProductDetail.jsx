@@ -98,7 +98,7 @@ const ProductDetail = () => {
           {/* IMAGE SECTION */}
           <div className="col-lg-7">
             <div className={`row g-3 ${isMobileOrTablet ? 'flex-column-reverse' : ''}`}>
-              <div className={`col-12 col-lg-2 d-flex ${isMobileOrTablet ? 'flex-row justify-content-center' : 'flex-column'} gap-3 overflow-auto`}>
+              <div className={`col-12 col-lg-2 d-flex ${isMobileOrTablet ? 'flex-row justify-content-center' : 'flex-column'} gap-2 overflow-auto`}>
                 {product.thumbnails?.map((thumb, index) => (
                   <motion.div 
                     key={index}
@@ -106,15 +106,17 @@ const ProductDetail = () => {
                     onClick={() => setSelectedImage(thumb)}
                     style={{ 
                         cursor: 'pointer', 
-                        width: isMobileOrTablet ? '60px' : 'auto',
-                        aspectRatio: '1/1.2', 
+                        width: isMobileOrTablet ? '65px' : '100%',
+                        height: isMobileOrTablet ? '65px' : '80px',
                         overflow: 'hidden',
-                        border: selectedImage === thumb ? '1px solid #000' : '1px solid transparent',
-                        padding: '4px',
-                        flexShrink: 0
+                        border: selectedImage === thumb ? '2px solid #000' : '1px solid #e5e5e5',
+                        padding: '3px',
+                        flexShrink: 0,
+                        backgroundColor: '#f9f9f9',
+                        borderRadius: '2px'
                     }}
                   >
-                    <img src={thumb} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={thumb} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                   </motion.div>
                 ))}
               </div>
@@ -137,7 +139,7 @@ const ProductDetail = () => {
           <div className="col-lg-5">
             <div className={`ps-lg-4 ${isMobileOrTablet ? 'text-center' : ''}`}>
                 <span style={{ color: '#e64e4e', letterSpacing: '4px', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase' }}>{product.category}</span>
-                <h1 style={{ fontSize: '42px', fontWeight: '900', margin: '15px 0', letterSpacing: '-1px' }}>{product.title}</h1>
+                <h1 style={{ fontSize: isMobileOrTablet ? '28px' : '42px', fontWeight: '900', margin: '15px 0', letterSpacing: '-1px', lineHeight: 1.1 }}>{product.title}</h1>
                 
                 <div className={`d-flex align-items-center gap-3 mb-4 ${isMobileOrTablet ? 'justify-content-center' : ''}`}>
                     <span style={{ fontSize: '28px', fontWeight: '800' }}>₹{product.price}</span>

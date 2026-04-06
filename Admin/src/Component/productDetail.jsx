@@ -26,28 +26,92 @@ function ProductDetail() {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="container d-flex justify-content-center" style={{
-      marginTop: '100px', minHeight: '80vh', fontSize: '17px',
-      fontFamily: '"Roboto", sans-serif'
-    }}>
-      <div className="card shadow p-4" style={{ maxWidth: '600px', width: '100%' }}>
-        <h1 className="text-center mb-4">{product.title}</h1>
-        <div className="d-flex justify-content-center mb-4">
-          <img
-            src={product.image}
-            alt={product.title}
-            style={{ maxWidth: '300px', maxHeight: '300px', objectFit: 'contain', borderRadius: '8px' }}
-          />
+    <div className="product-details-page">
+      <div className="text-head">
+        <div>
+          PIECE DETAILS
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Artisanal Archive & Specifications</span>
         </div>
-        <p><strong>Brand:</strong> {product.brandName}</p>
-        <p><strong>Category:</strong> {product.category}</p>
-        <p><strong>Price:</strong> ₹{product.price}</p>
-        <p><strong>Original Price:</strong> ₹{product.originalPrice}</p>
-        <p><strong>Color:</strong> {product.color}</p>
-        <p><strong>Sizes:</strong> {product.sizes.join(', ')}</p>
-        <p><strong>Stock:</strong> {product.stock}</p>
-        <p><strong>Description:</strong> {product.description}</p>
-        <p><strong>Added on:</strong> {new Date(product.createdAt).toLocaleDateString()}</p>
+        <button 
+          className="btn btn-sm btn-outline-dark border-0 mt-2 mt-md-0" 
+          onClick={() => window.history.back()}
+          style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}
+        >
+          ← BACK
+        </button>
+      </div>
+
+      <div className="row g-5">
+        {/* Visual Showcase */}
+        <div className="col-12 col-lg-5">
+          <div className="table-wrap p-0 overflow-hidden" style={{ background: '#f9f9f9', border: '1px solid #f0f0f0', maxWidth: '100%' }}>
+            <img
+              src={product.image}
+              alt={product.title}
+              className="product-detail-visual"
+            />
+          </div>
+          
+          <div className="mt-4 row g-2">
+            {product.thumbnails && product.thumbnails.map((thumb, idx) => (
+               <div className="col-3" key={idx}>
+                  <img src={thumb} alt="" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px', border: '1px solid #eee' }} />
+               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Curation Details */}
+        <div className="col-lg-7">
+          <div className="table-wrap h-100">
+            <div className="d-flex justify-content-between align-items-start mb-2">
+               <span style={{ fontSize: '11px', fontWeight: '900', color: '#e64e4e', letterSpacing: '3px', textTransform: 'uppercase' }}>{product.category}</span>
+               <span style={{ fontSize: '10px', fontWeight: '800', color: product.stock > 0 ? '#27ae60' : '#e64e4e', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  {product.stock > 0 ? `In Inventory (${product.stock})` : 'Sold Out'}
+               </span>
+            </div>
+            
+            <h1 className="product-title-detail" style={{ fontWeight: '900', color: '#000', marginBottom: '20px', letterSpacing: '-1px' }}>{product.title}</h1>
+            
+            <div className="d-flex align-items-baseline gap-3 mb-4">
+               <span style={{ fontSize: '28px', fontWeight: '900', color: '#000' }}>₹{product.price.toLocaleString('en-IN')}</span>
+               {product.originalPrice > product.price && (
+                  <span className="text-muted text-decoration-line-through">₹{product.originalPrice.toLocaleString('en-IN')}</span>
+               )}
+            </div>
+
+            <div className="row g-4 border-top pt-4 mb-4">
+               <div className="col-6 col-md-4">
+                  <label className="text-mutedSmall d-block mb-1">Color Palette</label>
+                  <div className="fw-bold">{product.color}</div>
+               </div>
+               <div className="col-6 col-md-4">
+                  <label className="text-mutedSmall d-block mb-1">Atelier Sizes</label>
+                  <div className="fw-bold">{Array.isArray(product.sizes) ? product.sizes.join(', ') : product.sizes}</div>
+               </div>
+               <div className="col-6 col-md-4">
+                  <label className="text-mutedSmall d-block mb-1">Brand Signature</label>
+                  <div className="fw-bold">{product.brandName}</div>
+               </div>
+            </div>
+
+            <div className="mb-5">
+               <label className="text-mutedSmall d-block mb-2">Artisanal Story</label>
+               <p style={{ fontSize: '15px', color: '#555', lineHeight: '1.8', margin: 0 }}>
+                  {product.description || "The soul of this piece lies in its unique craftsmanship and timeless silhouette, hand-curated for the modern wardrobe."}
+               </p>
+            </div>
+
+            <div className="mt-auto pt-4 border-top d-flex flex-column flex-sm-row gap-3">
+               <button className="btn btn-dark px-4 px-md-5 py-3 w-100-mobile" style={{ fontSize: '12px', fontWeight: '800', letterSpacing: '2px' }}>
+                  REFINE PIECE
+               </button>
+               <button className="btn btn-outline-danger px-4 py-3 w-100-mobile" style={{ fontSize: '12px', fontWeight: '800', letterSpacing: '2px' }}>
+                  RETIRE FROM COLLECTION
+               </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
