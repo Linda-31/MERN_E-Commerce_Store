@@ -141,6 +141,32 @@ router.get("/api/products/category/:category", async (req, res) => {
   res.json(products);
 });
 
+router.post("/:id/reviews", async (req, res) => {
+  try {
+    const { rating, comment, name } = req.body;
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      const review = {
+        name: name || "Anonymous",
+        rating: Number(rating),
+        comment,
+      };
+
+      product.reviews.push(review);
+      product.numReviews = product.reviews.length;
+      product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+
+      await product.save();
+      res.status(201).json({ message: "Review added successfully", product });
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  } catch (err) {
+    console.error("Error adding review:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 
 router.post("/filter", async (req, res) => {

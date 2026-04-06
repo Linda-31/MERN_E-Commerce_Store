@@ -79,16 +79,16 @@ function Wishlist() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="col-6 col-md-4 col-lg-3" 
+                className="col-12 col-md-4 col-lg-3" 
                 key={product._id}
               >
                 <div style={{ backgroundColor: '#fff', position: 'relative', border: '1px solid #eee' }}>
                   <Link to={`/products/${product._id}`} style={{ textDecoration: 'none' }}>
-                    <div style={{ height: '320px', overflow: 'hidden' }}>
+                    <div style={{ height: window.innerWidth < 768 ? '450px' : '320px', overflow: 'hidden' }}>
                       <img
                         src={product.image}
                         alt={product.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: '0.5s' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', transition: '0.5s' }}
                         className="hover-scale"
                       />
                     </div>

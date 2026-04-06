@@ -92,24 +92,13 @@ function Productlist() {
                   <motion.img
                     src={product.image}
                     alt={product.title}
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
                     variants={{ hover: { scale: 1.08 } }}
                     transition={{ duration: 0.8 }}
                     onClick={() => handleView(product._id)}
                   />
                   
-                  {/* Floating Glass Pill */}
-                  <div style={{ position: 'absolute', top: '15px', left: '15px' }}>
-                    <div style={{ 
-                      background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', 
-                      padding: '6px 12px', borderRadius: '50px', 
-                      display: 'flex', alignItems: 'center', gap: '6px',
-                      boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                    }}>
-                       <div style={{ width: '4px', height: '4px', background: '#e64e4e', borderRadius: '50%' }}></div>
-                       <span style={{ fontSize: '8px', fontWeight: 'bold', color: '#000', textTransform: 'uppercase', letterSpacing: '1px' }}>Premium</span>
-                    </div>
-                  </div>
+                  {/* Floating Glass Pill Removed to fix image overlay */}
 
                   {/* Quick Action Floating Icons */}
                   <motion.div 
@@ -155,6 +144,10 @@ function Productlist() {
 
                 {/* Info Container */}
                 <div style={{ padding: '20px 5px', textAlign: 'left' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                    <div style={{ width: '4px', height: '4px', background: '#e64e4e', borderRadius: '50%' }}></div>
+                    <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>Premium Quality</span>
+                  </div>
                   <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#000', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px', cursor: 'pointer', fontFamily: "'Jost', sans-serif" }} onClick={() => handleView(product._id)}>
                     {product.title}
                   </h4>

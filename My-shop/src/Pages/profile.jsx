@@ -16,6 +16,13 @@ function Profile() {
   const [previewImage, setPreviewImage] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState({ firstName: "", lastName: "" });
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 992);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const getCookieValue = (name) => {
     const cookies = document.cookie.split("; ");
@@ -168,9 +175,11 @@ function Profile() {
 
             {/* PROFILE FORM */}
             <div className="col-lg-8">
-              <div style={{ padding: '20px' }}>
-                <span style={{ fontSize: '11px', color: '#e64e4e', fontWeight: '900', letterSpacing: '5px', textTransform: 'uppercase' }}>Identity</span>
-                <h3 style={{ fontSize: '32px', fontWeight: '900', margin: '15px 0 45px', letterSpacing: '-1px' }}>PERSONAL DETAILS</h3>
+              <div style={{ padding: isMobile ? '40px 30px' : '20px' }}>
+                <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+                  <span style={{ fontSize: '11px', color: '#e64e4e', fontWeight: '900', letterSpacing: '5px', textTransform: 'uppercase' }}>Identity</span>
+                  <h3 style={{ fontSize: isMobile ? '28px' : '32px', fontWeight: '900', margin: '15px 0 45px', letterSpacing: '-1px' }}>PERSONAL DETAILS</h3>
+                </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="row g-5">

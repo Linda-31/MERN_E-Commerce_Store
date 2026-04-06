@@ -12,7 +12,16 @@ const productSchema = new mongoose.Schema({
   category: { type: String, required: true }, 
   description: { type: String, required: true },
   stock:  { type: Number, required: true },
-   
+  rating: { type: Number, default: 0 },
+  numReviews: { type: Number, default: 0 },
+  reviews: [
+    {
+      name: { type: String, default: "Anonymous" },
+      rating: { type: Number, required: true },
+      comment: { type: String, required: true },
+      createdAt: { type: Date, default: Date.now },
+    }
+  ]
 },{ timestamps: true });
 
 module.exports = mongoose.models.Product || mongoose.model('Product', productSchema);

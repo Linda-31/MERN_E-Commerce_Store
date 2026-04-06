@@ -219,7 +219,7 @@ function Home() {
         </div>
 
         {/* ===== SHOP BY CATEGORY - Carousel ===== */}
-        <div style={{ padding: '80px 0', backgroundColor: '#fff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '40px 0' : '80px 0', backgroundColor: '#fff' }}>
           <div className="container" style={{ position: 'relative' }}>
 
             {/* Section Header */}
@@ -337,7 +337,7 @@ function Home() {
         </div>
 
         {/* ===== SEASONAL HIGHLIGHTS — MODERN EDITORIAL COLLAGE ===== */}
-        <div style={{ padding: '120px 0', backgroundColor: '#fff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '120px 0', backgroundColor: '#fff' }}>
           <div className="container">
             {/* Minimalist Section Header */}
             <div className="row mb-5 pb-2">
@@ -457,7 +457,7 @@ function Home() {
           </div>
         </div>
         {/* ===== FEATURED PRODUCTS — EDITORIAL BOUTIQUE GRID ===== */}
-        <div style={{ padding: '120px 0', backgroundColor: '#fff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '120px 0', backgroundColor: '#fff' }}>
           <div className="container">
             {/* Section Header (Editorial Style) */}
             <div className="text-center mb-5 pb-4">
@@ -489,23 +489,12 @@ function Home() {
                       <motion.img
                         src={product.image}
                         alt={product.title}
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
                         variants={{ hover: { scale: 1.08 } }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                       />
                       
-                      {/* Floating Category Label (Like Seasonal Highlights) */}
-                      <div style={{ position: 'absolute', top: '15px', left: '15px', zIndex: 5 }}>
-                        <div style={{ 
-                          background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(10px)', 
-                          padding: '6px 14px', borderRadius: '50px', 
-                          display: 'flex', alignItems: 'center', gap: '6px',
-                          boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                        }}>
-                           <div style={{ width: '4px', height: '4px', background: '#e64e4e', borderRadius: '50%' }}></div>
-                           <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#000', textTransform: 'uppercase', letterSpacing: '1px' }}>New</span>
-                        </div>
-                      </div>
+                      {/* Floating Category Label Removed to avoid hiding image */}
 
                       {/* Animated Overlay for Buttons */}
                       <motion.div 
@@ -535,6 +524,10 @@ function Home() {
 
                     {/* Product Details (Clean & Minimal) */}
                     <div style={{ padding: '15px 5px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                        <div style={{ width: '4px', height: '4px', background: '#e64e4e', borderRadius: '50%' }}></div>
+                        <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>New Arrival</span>
+                      </div>
                       <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#000', margin: '0 0 5px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{product.title}</h4>
                       <div className="d-flex align-items-center gap-3">
                          <span style={{ fontSize: '16px', fontWeight: '800', color: '#e64e4e' }}>₹{product.price}</span>
@@ -563,28 +556,28 @@ function Home() {
           </div>
         </div>
         {/* ===== OUR BRAND STORY — MINIMALIST EDITORIAL ===== */}
-        <div style={{ padding: '140px 0', backgroundColor: '#fff', overflow: 'hidden' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '140px 0', backgroundColor: '#fff', overflow: 'hidden' }}>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-lg-6 mb-5 mb-lg-0">
                 <motion.div 
                   initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}
-                  style={{ position: 'relative' }}
+                  style={{ position: 'relative', textAlign: window.innerWidth < 768 ? 'center' : 'left' }}
                 >
                   <div style={{ 
-                    position: 'absolute', top: '-60px', left: '-40px', fontSize: '130px', 
+                    position: 'absolute', top: '-60px', left: window.innerWidth < 768 ? '0' : '-40px', right: window.innerWidth < 768 ? '0' : 'auto', textAlign: window.innerWidth < 768 ? 'center' : 'left', fontSize: '130px', 
                     fontWeight: '900', color: '#f7f7f7', zIndex: 0, fontFamily: "'Jost', sans-serif" 
                   }}>2025</div>
-                  <div style={{ position: 'relative', zIndex: 1, paddingRight: '40px' }}>
-                    <div style={{ width: '50px', height: '3px', background: '#e64e4e', marginBottom: '40px' }}></div>
+                  <div style={{ position: 'relative', zIndex: 1, paddingRight: window.innerWidth < 768 ? '0' : '40px', paddingLeft: window.innerWidth < 768 ? '15px' : '0', paddingRight: window.innerWidth < 768 ? '15px' : '40px' }}>
+                    <div style={{ width: '50px', height: '3px', background: '#e64e4e', marginBottom: '40px', marginLeft: window.innerWidth < 768 ? 'auto' : '0', marginRight: window.innerWidth < 768 ? 'auto' : '0' }}></div>
                     <span style={{ color: '#888', letterSpacing: '4px', textTransform: 'uppercase', fontSize: '11px', fontWeight: 'bold', display: 'block', marginBottom: '20px' }}>Our Heritage</span>
                     <h2 style={{ fontSize: window.innerWidth < 768 ? '36px' : '56px', fontWeight: '800', lineHeight: '1.1', color: '#000', marginBottom: '30px', fontFamily: "'Jost', sans-serif" }}>Defining <br/>Modern Style</h2>
-                    <p style={{ color: '#666', fontSize: window.innerWidth < 768 ? '15px' : '18px', lineHeight: '1.8', maxWidth: '500px', marginBottom: '35px' }}>
+                    <p style={{ color: '#666', fontSize: window.innerWidth < 768 ? '15px' : '18px', lineHeight: '1.8', maxWidth: '500px', margin: window.innerWidth < 768 ? '0 auto 35px' : '0 0 35px 0' }}>
                       KUSHI was born from a desire to merge timeless craftsmanship with the fluid nature of modern life. We create pieces that don't just fill a wardrobe, but tell a story of quality, ethics, and unparalleled design.
                     </p>
                     <motion.button
-                      whileHover={{ x: 10 }}
-                      style={{ background: 'transparent', border: 'none', borderBottom: '2px solid #000', padding: '0 0 5px 0', fontSize: '11px', fontWeight: 'bold', letterSpacing: '2px', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '15px' }}
+                      whileHover={{ x: window.innerWidth < 768 ? 0 : 10, y: window.innerWidth < 768 ? -5 : 0 }}
+                      style={{ background: 'transparent', border: 'none', borderBottom: '2px solid #000', padding: '0 0 5px 0', fontSize: '11px', fontWeight: 'bold', letterSpacing: '2px', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '15px', margin: window.innerWidth < 768 ? '0 auto' : '0' }}
                     >
                        DISCOVER OUR JOURNEY <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_right_alt</span>
                     </motion.button>
@@ -617,7 +610,7 @@ function Home() {
         </div>
 
         {/* ===== EDITORIAL STORY — SIGNATURE OUTERWEAR — RESPONSIVE ===== */}
-        <div style={{ backgroundColor: '#fafafa', padding: window.innerWidth < 768 ? '80px 0' : '140px 0' }}>
+        <div style={{ backgroundColor: '#fafafa', padding: window.innerWidth < 768 ? '50px 0' : '140px 0' }}>
           <div className="container">
             <div className="row align-items-center g-5">
               <div className="col-lg-7" style={{ position: 'relative' }}>
@@ -692,7 +685,7 @@ function Home() {
           </div>
         </div>
         {/* ===== HOT SELLING / BEST SELLERS — EDITORIAL STYLE ===== */}
-        <div style={{ padding: window.innerWidth < 768 ? '80px 0' : '120px 0', backgroundColor: '#fff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '120px 0', backgroundColor: '#fff' }}>
           <div className="container">
             <div className="text-center mb-5 pb-4">
               <motion.span 
@@ -710,7 +703,7 @@ function Home() {
         </div>
 
         {/* ===== TESTIMONIALS SECTION — MODERN MINIMALST ===== */}
-        <div style={{ backgroundColor: '#fafafa', padding: window.innerWidth < 768 ? '80px 0' : '150px 0', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ backgroundColor: '#fafafa', padding: window.innerWidth < 768 ? '50px 0' : '150px 0', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '10%', left: '5%', fontSize: '200px', color: '#f0f0f0', fontWeight: '900', zIndex: 0, fontFamily: "'Jost', sans-serif", opacity: 0.5 }}>“</div>
           
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -737,7 +730,7 @@ function Home() {
         </div>
 
         {/* ===== EDITORIAL FEED: SHOP THE LOOK — BOUTIQUE GALLERY ===== */}
-        <div style={{ padding: window.innerWidth < 768 ? '80px 0' : '150px 0', backgroundColor: '#ffffff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '150px 0', backgroundColor: '#ffffff' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <motion.span 
               initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
@@ -796,7 +789,7 @@ function Home() {
 
        
         {/* ===== LATEST BLOG / NEWS — EDITORIAL CARDS ===== */}
-        <div style={{ padding: window.innerWidth < 768 ? '80px 0' : '150px 0', backgroundColor: '#fff' }}>
+        <div style={{ padding: window.innerWidth < 768 ? '50px 0' : '150px 0', backgroundColor: '#fff' }}>
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '80px' }}>
               <motion.span 

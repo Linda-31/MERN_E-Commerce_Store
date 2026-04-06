@@ -232,7 +232,7 @@ function Header() {
         {/* ── SEARCH BAR ── */}
         <div style={{
           overflow: 'hidden',
-          maxHeight: showSearch ? '80px' : '0',
+          maxHeight: showSearch ? '160px' : '0',
           transition: 'max-height 0.35s ease',
           borderTop: showSearch ? '1px solid #f0f0f0' : 'none'
         }}>
@@ -246,22 +246,36 @@ function Header() {
               background: '#fff' 
             }}
           >
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-              style={{
-                flex: 1, padding: '12px 16px', border: '1px solid #e8e8e8',
-                outline: 'none', fontSize: '14px', fontFamily: "'Jost', sans-serif",
-                borderRadius: '4px'
-              }}
-              autoFocus={showSearch}
-            />
+            <div style={{ flex: 1, position: 'relative', display: 'flex' }}>
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                style={{
+                  width: '100%', padding: '12px 40px 12px 16px', border: '1px solid #e8e8e8',
+                  outline: 'none', fontSize: '14px', fontFamily: "'Jost', sans-serif",
+                  borderRadius: '4px'
+                }}
+                autoFocus={showSearch}
+              />
+              <button 
+                type="button" 
+                onClick={() => setShowSearch(false)}
+                style={{
+                  position: 'absolute', right: '5px', top: '50%', transform: 'translateY(-50%)',
+                  background: 'none', border: 'none', color: '#888', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '5px'
+                }}
+                aria-label="Close search"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+              </button>
+            </div>
             <button
                type="submit"
                style={{
-                padding: '0 28px', background: '#000', color: '#fff',
+                padding: window.innerWidth < 480 ? '12px' : '0 28px', background: '#000', color: '#fff',
                 border: 'none', fontWeight: '700', fontSize: '12px',
                 letterSpacing: '1px', cursor: 'pointer', borderRadius: '4px',
                 fontFamily: "'Jost', sans-serif"
