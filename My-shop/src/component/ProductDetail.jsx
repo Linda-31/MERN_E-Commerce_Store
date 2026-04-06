@@ -146,6 +146,12 @@ const ProductDetail = () => {
                     )}
                 </div>
 
+                {/* DYNAMIC PRODUCT RATING */}
+                <div className={`d-flex align-items-center gap-2 mb-4 ${isMobileOrTablet ? 'justify-content-center' : ''}`}>
+                    <StarRating staticRating={product.rating || 0} />
+                    <span style={{ fontSize: '12px', color: '#888', fontWeight: 'bold' }}>({product.numReviews || 0} Reviews)</span>
+                </div>
+
                 <p style={{ color: '#666', lineHeight: '1.8', fontSize: '15px', marginBottom: '40px' }}>
                     {product.description || "Elevate your everyday style with this premium piece from our latest collection. Crafted for those who appreciate fine details and timeless design."}
                 </p>
@@ -413,7 +419,7 @@ const ProductDetail = () => {
                                       )}
                                   </div>
                                   <div style={{ marginTop: '10px', opacity: 0.8, display: 'flex', justifyContent: 'center' }}>
-                                      <StarRating />
+                                      <StarRating staticRating={relProduct.rating || 0} />
                                   </div>
                               </div>
                           </motion.div>
