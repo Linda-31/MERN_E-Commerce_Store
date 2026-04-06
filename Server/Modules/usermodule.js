@@ -9,6 +9,7 @@ const userSchema=new mongoose.Schema({
     mobile: {type:String},
     Address: {type:String},
     status: {type: String,enum: ['Active', 'Inactive'],default: 'Active'},
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
     image: { type: String},
     joinedAt: { type: Date, default: Date.now },
     deliveryAddress: {

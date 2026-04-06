@@ -73,7 +73,7 @@ function Order() {
       <div className="text-head">
         <div>
           KUSHI ORDERS
-          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Managing boutique sales</span>
+          <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Managing kushi sales</span>
         </div>
         <div className="d-flex w-100 w-md-auto mt-3 mt-md-0">
            <input

@@ -1,5 +1,6 @@
 const express = require("express");
 const Product = require("../Modules/productmodule");
+const { protect, isAdmin } = require("../Middleware/authMiddleware");
 const router = express.Router();
 
 
@@ -13,9 +14,9 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/add", async (req, res) => {
-    try {
 
+router.post("/add", protect, isAdmin, async (req, res) => {
+    try {
         const {
             title,
             brandName,
@@ -50,7 +51,8 @@ router.post("/add", async (req, res) => {
     }
 });
 
-router.put("/:id", async (req, res) => {
+
+router.put("/:id", protect, isAdmin, async (req, res) => {
     try {
         const { id } = req.params;
         const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {
@@ -68,7 +70,10 @@ router.put("/:id", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
-router.delete("/:id", async (req, res) => {
+
+
+router.delete("/:id", protect, isAdmin, async (req, res) => {
+
     try {
         const { id } = req.params;
         const deletedProduct = await Product.findByIdAndDelete(id);

@@ -83,7 +83,7 @@ function Home() {
       sub: `${loading ? "—" : stats.pendingOrders} pending`,
     },
     {
-      title: "BOUTIQUE CLIENTS",
+      title: "Kushi CLIENTS",
       value: loading ? "—" : stats.totalUsers.toLocaleString(),
       icon: "bi-people",
       color: "#f39c12",

@@ -54,8 +54,8 @@ function ProductDetail() {
           
           <div className="mt-4 row g-2">
             {product.thumbnails && product.thumbnails.map((thumb, idx) => (
-               <div className="col-3" key={idx}>
-                  <img src={thumb} alt="" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px', border: '1px solid #eee' }} />
+               <div className="col-6 col-md-4 col-lg-3" key={idx}>
+                  <img src={thumb} alt="" className="product-thumbnail-img" />
                </div>
             ))}
           </div>

@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
 
     req.body.password = await bcrypt.hash(req.body.password, 10);
 
-    const { fullName, email, password } = req.body;
+    const { fullName, email, password, role } = req.body;
 
     const existing = await User.findOne({ email });
     if (existing) {
@@ -45,7 +45,7 @@ router.post('/signup', async (req, res) => {
     }
 
 
-    const newUser = new User({ fullName, email, password });
+    const newUser = new User({ fullName, email, password, role });
     await newUser.save();
 
     res.status(201).json({ message: 'Signup successful', user: newUser });
@@ -56,6 +56,15 @@ router.post('/signup', async (req, res) => {
 }
 );
 
+const jwt = require("jsonwebtoken");
+
+// Generate JWT Token
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET || "kushi_secret_2024", {
+    expiresIn: "30d",
+  });
+};
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -64,13 +73,23 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "User not found" });
     }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    res.status(200).json({ message: "Login successful", user: { fullName: user.fullName, email: user.email, _id: user._id } });
-    } catch (err) {
+    res.status(200).json({
+      message: "Login successful",
+      user: {
+        fullName: user.fullName,
+        email: user.email,
+        _id: user._id,
+        role: user.role || 'user', // Ensure role exists
+        token: generateToken(user._id), // Return the JWT token
+      },
+    });
+  } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: "Server error" });
   }

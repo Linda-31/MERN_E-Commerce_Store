@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from 'react-router-dom';
 
 function Wishlist() {
-  const wishlist = useSelector((state) => state.wishlist.items);
+  const { items: wishlist, status } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
   const getCookieValue = (name) => {
@@ -64,7 +64,14 @@ function Wishlist() {
       </div>
 
       <div className="container py-5">
-        {wishlist.length === 0 ? (
+        {status === 'loading' || status === 'idle' ? (
+          <div className="text-center py-5">
+            <div className="spinner-border text-dark" style={{ width: '1.5rem', height: '1.5rem', borderWidth: '2px' }} role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="mt-3 text-muted" style={{ letterSpacing: '2px', fontSize: '10px', fontWeight: 'bold' }}>SYNCHRONIZING WISHLIST...</p>
+          </div>
+        ) : status === 'succeeded' && wishlist.length === 0 ? (
           <div className="text-center py-5">
             <span className="material-symbols-outlined mb-3" style={{ fontSize: '48px', color: '#eee' }}>heart_broken</span>
             <p className="text-muted" style={{ letterSpacing: '2px', fontSize: '13px', fontWeight: 'bold' }}>YOUR WISHLIST IS CURRENTLY EMPTY</p>
