@@ -39,7 +39,9 @@ app.use('/api/wishlists', wishlist);
 app.use('/api/blogs', blog);
 app.use('/api/contacts', contact);
 app.use('/api/newsletters', newsletter);
-
+app.get('/', (req, res) => {
+    res.status(200).send("Welcome to the MERN Store API!");
+});
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
