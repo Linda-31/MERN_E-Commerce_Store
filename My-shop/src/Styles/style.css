@@ -820,3 +820,28 @@ img.rounded-circle {
 }
 
 
+/* Blog Detail Styles */
+.blog-content p {
+    margin-bottom: 25px;
+    color: #444;
+}
+
+.blog-content h2, .blog-content h3, .blog-content h4 {
+    color: #000;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.blog-content blockquote {
+    font-size: 24px;
+    font-style: italic;
+    color: #e64e4e;
+    border-left: 5px solid #e64e4e;
+    padding-left: 30px;
+    margin: 40px 0;
+}
+
+.font-black {
+    color: #000 !important;
+}

@@ -13,6 +13,7 @@ import Profile from './Pages/profile';
 import Footer from './component/footer';
 import Payment from './component/payment';
 import ProductDetail from './component/ProductDetail';
+import BlogDetail from './component/BlogDetail';
 import Wishlist from './component/wishlist';
 import Success from "./Pages/Success";
 import FAQ from "./Pages/FAQ";
@@ -43,6 +44,7 @@ function AppContent() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/About" element={<About />} />
