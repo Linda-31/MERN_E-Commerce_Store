@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://mern-store-server.onrender.com';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

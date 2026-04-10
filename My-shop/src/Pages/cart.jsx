@@ -20,7 +20,7 @@ function Cart() {
     if(!token) return;
     const decoded = JSON.parse(atob(token));
     const userId = decoded?._id;
-    axios.get(`http://localhost:4000/api/carts/${userId}`).then((response) => {
+    axios.get(`/api/carts/${userId}`).then((response) => {
       setCartItems(response.data);
       const totalQuantity = response.data.products?.reduce((sum, item) => sum + item.quantity, 0) || 0;
       dispatch(setCartCount(totalQuantity));
@@ -81,7 +81,7 @@ function Cart() {
         totalAmount: total
       };
 
-      const response = await axios.post('http://localhost:4000/api/orders/add', orderData);
+      const response = await axios.post('/api/orders/add', orderData);
       toast.success("Order curated successfully");
       navigate("/payment", { state: { totalAmount: total, orderId: response.data.orderId } });
     } catch (error) {
@@ -111,7 +111,7 @@ function Cart() {
     const user = JSON.parse(atob(token));
     const userId = user._id;
 
-    axios.delete(`http://localhost:4000/api/carts/cart/${userId}/item/${itemId}`)
+    axios.delete(`/api/carts/cart/${userId}/item/${itemId}`)
       .then(() => getCartItems())
       .catch(console.error);
   }
@@ -132,7 +132,7 @@ function Cart() {
     const user = JSON.parse(atob(token));
     const userId = user._id;
     try {
-      await axios.put('http://localhost:4000/api/carts/update', { productId, delta, userId });
+      await axios.put('/api/carts/update', { productId, delta, userId });
       getCartItems();
     } catch (e) {}
   };

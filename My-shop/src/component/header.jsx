@@ -78,7 +78,7 @@ function Header() {
     if (!searchTerm.trim()) return;
 
     try {
-      const response = await axios.get(`http://localhost:4000/api/products/search?q=${searchTerm}`);
+      const response = await axios.get(`/api/products/search?q=${searchTerm}`);
       navigate('/shop', { 
         state: { 
           results: response.data, 

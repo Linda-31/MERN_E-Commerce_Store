@@ -11,7 +11,7 @@ function Filter({ onApply }) {
 
 const onSubmit = async (data) => {
   try {
-    const res = await axios.post("http://localhost:4000/api/products/filter", data);
+    const res = await axios.post("/api/products/filter", data);
     onApply(res.data); 
   } catch (err) {
     console.error("Error applying filters:", err);
@@ -24,7 +24,7 @@ const onSubmit = async (data) => {
     reset();
     window.location.reload();
     try {
-     const res = await axios.get("http://localhost:4000/api/products");
+     const res = await axios.get("/api/products");
       onApply(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);

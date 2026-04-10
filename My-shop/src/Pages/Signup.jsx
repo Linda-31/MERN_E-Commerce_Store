@@ -13,7 +13,7 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('http://localhost:4000/api/users/signup', {
+      const res = await axios.post('/api/users/signup', {
         fullName: data.fullName,
         email: data.email,
         password: btoa(data.password),

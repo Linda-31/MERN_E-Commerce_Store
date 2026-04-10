@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
   async (userId) => {
-    const res = await axios.get(`http://localhost:4000/api/wishlists/${userId}`);
+    const res = await axios.get(`/api/wishlists/${userId}`);
     return res.data;
   }
 );
@@ -12,7 +12,7 @@ export const fetchWishlist = createAsyncThunk(
 export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
   async ({ userId, productId }) => {
-    const res = await axios.post(`http://localhost:4000/api/wishlists/add`, {
+    const res = await axios.post(`/api/wishlists/add`, {
       userId,
       productId
       
@@ -25,7 +25,7 @@ export const addToWishlist = createAsyncThunk(
 export const removeFromWishlist = createAsyncThunk(
   "wishlist/removeFromWishlist",
   async ({ userId, productId }) => {
-    const res = await axios.delete(`http://localhost:4000/api/wishlists/remove`, {
+    const res = await axios.delete(`/api/wishlists/remove`, {
       data: { userId, productId }
     });
     return res.data;

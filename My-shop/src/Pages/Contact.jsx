@@ -15,7 +15,7 @@ function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm();
   const onSubmit = async (data) => {
     try {
-      await axios.post('http://localhost:4000/api/contacts/save', data);
+      await axios.post('/api/contacts/save', data);
       toast.success("Inquiry delivered to our curators");
       reset();
     } catch (error) {
@@ -177,4 +177,4 @@ function Contact() {
 export default Contact;
 
 
-
+

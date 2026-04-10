@@ -34,11 +34,11 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${id}`);
+        const response = await axios.get(`/api/products/${id}`);
         setProduct(response.data);
         setSelectedImage(response.data.image);
         
-        const allProducts = await axios.get('http://localhost:4000/api/products/');
+        const allProducts = await axios.get('/api/products/');
         const related = allProducts.data.filter(p => p.category === response.data.category && p._id !== id);
         setRelatedProducts(related.slice(0, 4));
       } catch (error) {
@@ -67,7 +67,7 @@ const ProductDetail = () => {
     };
 
     try {
-        await axios.post('http://localhost:4000/api/carts/save', {
+        await axios.post('/api/carts/save', {
           userId,
           product: productToAdd,
         });
@@ -357,7 +357,7 @@ const ProductDetail = () => {
                                                     else if (decoded.email) name = decoded.email.split('@')[0];
                                                 } catch(e) {}
                                             }
-                                            const response = await axios.post(`http://localhost:4000/api/products/${id}/reviews`, {
+                                            const response = await axios.post(`/api/products/${id}/reviews`, {
                                                 rating: reviewRating,
                                                 comment: reviewText,
                                                 name: name

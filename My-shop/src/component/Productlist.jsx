@@ -17,7 +17,7 @@ function Productlist() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/products/")
+    axios.get("/api/products/")
       .then((response) => {
         const remainingProducts = response.data.slice(4);
         setProducts(remainingProducts);
@@ -55,7 +55,7 @@ function Productlist() {
       const decoded = JSON.parse(atob(token));
       const userId = decoded?._id;
 
-      const response = await axios.post('http://localhost:4000/api/carts/save', {
+      const response = await axios.post('/api/carts/save', {
         userId,
         product,
       });

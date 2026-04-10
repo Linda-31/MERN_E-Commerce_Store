@@ -32,7 +32,7 @@ function Payment() {
       const user = JSON.parse(atob(token));
       const userId = user._id;
 
-      axios.get(`http://localhost:4000/api/users/${userId}`)
+      axios.get(`/api/users/${userId}`)
         .then((res) => {
           const userData = res.data;
           if (userData.deliveryAddress) {
@@ -101,7 +101,7 @@ function Payment() {
       const token = getCookieValue("token");
       if (!token) return toast.error("Authentication required");
       const user = JSON.parse(atob(token));
-      await axios.put(`http://localhost:4000/api/users/${user._id}/delivery-address`, {
+      await axios.put(`/api/users/${user._id}/delivery-address`, {
         deliveryAddress: { fullName: name, address, city, state: stateField, pincode }
       });
       toast.success("Shipping details secured");

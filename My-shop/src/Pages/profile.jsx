@@ -40,7 +40,7 @@ function Profile() {
 
       if (!userId) return;
 
-      axios.get(`http://localhost:4000/api/users/${userId}`)
+      axios.get(`/api/users/${userId}`)
         .then((res) => {
           const userData = res.data;
           reset({
@@ -71,7 +71,7 @@ function Profile() {
       const user = JSON.parse(atob(token));
       const { _id: userId } = user;
       const updatedData = { ...data, image: previewImage || userImage || "" };
-      const response = await axios.put(`http://localhost:4000/api/users/${userId}`, updatedData);
+      const response = await axios.put(`/api/users/${userId}`, updatedData);
       
       if (updatedData.image) setUserImage(updatedData.image);
       setName({ firstName: data.fullName, lastName: data.lastName });

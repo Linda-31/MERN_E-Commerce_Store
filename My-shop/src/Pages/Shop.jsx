@@ -31,7 +31,7 @@ function Shop() {
       setSearchTerm(location.state.query || "");
       setLoading(false);
     } else {
-      axios.get("http://localhost:4000/api/products/")
+      axios.get("/api/products/")
         .then((response) => {
           setProducts(response.data);
           setLoading(false);
@@ -50,7 +50,7 @@ function Shop() {
     }
 
     const delayDebounce = setTimeout(() => {
-      axios.get(`http://localhost:4000/api/products/search?q=${searchTerm}`)
+      axios.get(`/api/products/search?q=${searchTerm}`)
         .then((response) => {
           setProducts(response.data);
         })
@@ -101,7 +101,7 @@ function Shop() {
     const userId = decoded?._id;
 
     try {
-        const response = await axios.post('http://localhost:4000/api/carts/save', {
+        const response = await axios.post('/api/carts/save', {
           userId,
           product
         });
@@ -125,7 +125,7 @@ function Shop() {
     setCategory(newCategory);
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:4000/api/products/category/${newCategory}`);
+      const response = await axios.get(`/api/products/category/${newCategory}`);
       setProducts(response.data);
       setFiltersApplied(false);
       setFilteredResults([]);
@@ -416,4 +416,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default Shop;

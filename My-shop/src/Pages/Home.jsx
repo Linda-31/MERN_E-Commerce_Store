@@ -118,7 +118,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/products/")
+      .get("/api/products/")
       .then((res) => {
         const data = res.data;
         if (Array.isArray(data)) {
@@ -131,7 +131,7 @@ function Home() {
       .catch((err) => console.error("Failed to load featured products", err));
 
     axios
-      .get("http://localhost:4000/api/blogs")
+      .get("/api/blogs")
       .then((res) => {
         if (Array.isArray(res.data)) {
           setBlogs(res.data.slice(0, 3));
@@ -156,7 +156,7 @@ function Home() {
       ...product,
     };
 
-    const response = await axios.post('http://localhost:4000/api/carts/save', {
+    const response = await axios.post('/api/carts/save', {
       userId,
       product: productToAdd,
     });
@@ -175,7 +175,7 @@ function Home() {
     e.preventDefault();
     const email = e.target.querySelector('input[type="email"]').value;
     try {
-      await axios.post('http://localhost:4000/api/newsletters/subscribe', { email });
+      await axios.post('/api/newsletters/subscribe', { email });
       toast.success('Thanks for subscribing to our curation!');
       e.target.reset();
     } catch (error) {

@@ -13,7 +13,7 @@ function Blog({ searchTerm = '', category = 'all' }) {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/blogs');
+        const response = await axios.get('/api/blogs');
         setBlogs(response.data);
       } catch (err) {
         console.error("Failed to fetch blogs", err);
