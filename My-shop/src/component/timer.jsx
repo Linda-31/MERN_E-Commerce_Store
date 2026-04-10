@@ -14,24 +14,102 @@ function DiscountTimer() {
   if (timeLeft.total <= 0) return <p>Discount expired!</p>;
 
   return (
-    <div className="discount-timer" style={timerStyle}>
-     <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: "60px", fontWeight: "600" }}>{timeLeft.days}</div>
-    <div style={{ fontSize: "20px"}}>Days</div>
-  </div>
-  <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: "60px", fontWeight: "600" }}>{timeLeft.hours}</div>
-    <div  style={{ fontSize: "20px"}}>Hours</div>
-  </div>
-  <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: "60px", fontWeight: "600" }}>{timeLeft.minutes}</div>
-    <div  style={{ fontSize: "20px"}}>Minutes</div>
-  </div>
-  <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: "60px", fontWeight: "600" }}>{timeLeft.seconds}</div>
-    <div  style={{ fontSize: "20px"}}>Seconds</div>
-  </div>
-    </div>
+    <>
+      <style>{`
+        .discount-timer {
+          display: flex;
+          gap: 70px;
+          justify-content: center;
+          margin: 20px 0;
+          color: grey;
+        }
+        .timer-unit-container {
+          text-align: center;
+        }
+        .timer-value {
+          font-size: 60px;
+          font-weight: 600;
+          line-height: 1;
+        }
+        .timer-unit-label {
+          font-size: 20px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-top: 5px;
+        }
+
+        /* Tablet (max-width: 991px) */
+        @media (max-width: 991px) {
+          .discount-timer {
+            gap: 40px;
+          }
+          .timer-value {
+            font-size: 45px;
+          }
+          .timer-unit-label {
+            font-size: 16px;
+          }
+        }
+
+        /* Large Mobile (max-width: 767px) */
+        @media (max-width: 767px) {
+          .discount-timer {
+            gap: 25px;
+          }
+          .timer-value {
+            font-size: 35px;
+          }
+          .timer-unit-label {
+            font-size: 14px;
+          }
+        }
+
+        /* Medium Mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+          .discount-timer {
+            gap: 15px;
+          }
+          .timer-value {
+            font-size: 28px;
+          }
+          .timer-unit-label {
+            font-size: 12px;
+          }
+        }
+
+        /* Small Mobile (max-width: 375px) */
+        @media (max-width: 375px) {
+          .discount-timer {
+            gap: 10px;
+          }
+          .timer-value {
+            font-size: 24px;
+          }
+          .timer-unit-label {
+            font-size: 10px;
+          }
+        }
+      `}</style>
+
+      <div className="discount-timer">
+        <div className="timer-unit-container">
+          <div className="timer-value">{timeLeft.days}</div>
+          <div className="timer-unit-label">Days</div>
+        </div>
+        <div className="timer-unit-container">
+          <div className="timer-value">{timeLeft.hours}</div>
+          <div className="timer-unit-label">Hours</div>
+        </div>
+        <div className="timer-unit-container">
+          <div className="timer-value">{timeLeft.minutes}</div>
+          <div className="timer-unit-label">Minutes</div>
+        </div>
+        <div className="timer-unit-container">
+          <div className="timer-value">{timeLeft.seconds}</div>
+          <div className="timer-unit-label">Seconds</div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -44,14 +122,5 @@ function getTimeRemaining(endTime) {
   return { total, days, hours, minutes, seconds };
 }
 
-const timerStyle = {
-  display: 'flex',
-  gap: '70px',
-  fontSize: '60px',
-  fontWeight: '600',
-  justifyContent: 'center',
-  margin: '20px 0',
-  color:'grey',
-};
-
 export default DiscountTimer;
+
