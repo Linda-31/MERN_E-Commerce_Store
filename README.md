@@ -9,8 +9,9 @@ This project features a customer-facing store for browsing and purchasing fashio
 ---
 
 ## 🚀 Live Links
-* **Project Live:** [https://mern-e-commerce-store-je53.onrender.com](https://mern-e-commerce-store-je53.onrender.com)
-* **Admin:** [https://e-commerce-admin-aw4a.onrender.com](https://e-commerce-admin-aw4a.onrender.com)
+* **Kushi Store:** [https://mern-e-commerce-store-je53.onrender.com](https://mern-e-commerce-store-je53.onrender.com)
+* **Admin Panel:** [https://e-commerce-admin-aw4a.onrender.com](https://e-commerce-admin-aw4a.onrender.com)
+* **Backend Server** [https://mern-store-server.onrender.com](https://mern-store-server.onrender.com) 
 
 ---
 
