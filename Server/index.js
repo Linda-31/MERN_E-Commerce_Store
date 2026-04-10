@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const cors = require('cors');
 const mongoose=require('mongoose');
-mongoose.connect("mongodb://localhost:27017/DressShop",{})
+mongoose.connect(process.env.MONGODB_URI, {})
 .then(() => console.log('Success'))
 .catch(err => console.error('Error:', err));
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(cookieParser()); 
-require('dotenv').config();
+
 
 
 
