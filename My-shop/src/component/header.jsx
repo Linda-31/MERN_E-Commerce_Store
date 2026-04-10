@@ -325,6 +325,13 @@ function Header() {
                <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>person</span>
                <div style={{ fontSize: '9px', fontWeight: '800', marginTop: '4px', letterSpacing: '1px' }}>PROFILE</div>
             </Link>
+            {/* Logout */}
+            {userName && (
+              <div onClick={() => { handleLogout(); closeMenu(); }} style={{ cursor: 'pointer', textAlign: 'center', color: '#e64e4e' }}>
+                 <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>logout</span>
+                 <div style={{ fontSize: '9px', fontWeight: '800', marginTop: '4px', letterSpacing: '1px' }}>LOGOUT</div>
+              </div>
+            )}
           </div>
 
           <ul style={{ listStyle: 'none', margin: 0, padding: '10px 0 20px' }}>
