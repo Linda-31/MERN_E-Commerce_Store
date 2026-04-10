@@ -1,7 +1,7 @@
 # 🛍️ Shopping E-commerce Website
 
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://mern-e-commerce-store-je53.onrender.com)
-[![Admin API](https://img.shields.io/badge/API-running-blue.svg)](https://e-commerce-admin-aw4a.onrender.com)
+[![Admin Dashboard](https://img.shields.io/badge/Admin-Dashboard-orange.svg)](https://e-commerce-admin-aw4a.onrender.com)
 
 A **full-stack e-commerce platform** built using the MERN stack (**React.js, Node.js, Express.js, and MongoDB**).  
 This project features a customer-facing store for browsing and purchasing fashion products, and a dedicated **Admin Dashboard** for complete business management.
@@ -9,7 +9,7 @@ This project features a customer-facing store for browsing and purchasing fashio
 ---
 
 ## 🚀 Live Links
-* **Project Live:** [Kushi_Store]((https://mern-e-commerce-store-je53.onrender.com)
+* **Project Live:** [https://mern-e-commerce-store-je53.onrender.com](https://mern-e-commerce-store-je53.onrender.com)
 * **Admin:** [https://e-commerce-admin-aw4a.onrender.com](https://e-commerce-admin-aw4a.onrender.com)
 
 ---
