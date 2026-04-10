@@ -55,7 +55,7 @@ function BlogPage() {
           <div style={{ width: '40px', height: '2px', background: '#e64e4e', margin: window.innerWidth < 768 ? '15px auto' : '30px auto' }}></div>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px' }}>
              <Link to="/home" style={{ color: '#aaa', textDecoration: 'none', fontSize: '11px', fontWeight: 'bold', letterSpacing: '2px' }}>HOME</Link>
-             <span style={{ color: '#e64e4e' }}>/</span>
+             <span style={{ color: '#e64e4e' }}>•</span>
              <span style={{ color: '#fff', fontSize: '11px', fontWeight: 'bold', letterSpacing: '2px' }}>JOURNAL</span>
           </div>
         </motion.div>

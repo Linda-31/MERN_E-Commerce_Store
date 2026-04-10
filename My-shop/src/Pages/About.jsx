@@ -3,13 +3,17 @@ import "../Styles/style.css";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import member1 from '../Assets/member1.jpg';
+import member2 from '../Assets/member2.jpg';
+import member3 from '../Assets/member3.jpg';
+import member4 from '../Assets/member4.jpg';
 
 function About() {
   const members = [
-    { name: "Johnson", role: "Designer", image: "/images/member1.jpg" },
-    { name: "Mark Smith", role: "Stylist", image: "/images/member2.jpg" },
-    { name: "Sara Lee", role: "Manager", image: "/images/member3.jpg" },
-    { name: "David Brown", role: "Marketing", image: "/images/member4.jpg" },
+    { name: "Johnson", role: "Designer", image: member1 },
+    { name: "Mark Smith", role: "Stylist", image: member2 },
+    { name: "Sara Lee", role: "Manager", image: member3 },
+    { name: "David Brown", role: "Marketing", image: member4 },
   ];
   const [customers, setCustomers] = useState(0);
   const [orders, setOrders] = useState(0);

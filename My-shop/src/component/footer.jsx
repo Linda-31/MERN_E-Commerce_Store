@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "../Styles/style.css";
 import { FaFacebookF, FaInstagram, FaPinterestP, FaTwitter, FaArrowUp } from 'react-icons/fa';
+import iconPay01 from '../Assets/icon-pay-01.png';
+import iconPay02 from '../Assets/icon-pay-02.png';
+import iconPay03 from '../Assets/icon-pay-03.png';
+import iconPay04 from '../Assets/icon-pay-04.png';
 
 function Footer() {
   const scrollToTop = () => {
@@ -94,10 +98,10 @@ function Footer() {
               <span style={{ color: '#fff', display: 'block', marginTop: '10px' }}>(+1) 96 716 6879</span>
             </p>
             <div className="d-flex align-items-center gap-2 mt-4 op-7 justify-content-center justify-content-lg-start">
-               <img src="/images/icon-pay-01.png" alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
-               <img src="/images/icon-pay-02.png" alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
-               <img src="/images/icon-pay-03.png" alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
-               <img src="/images/icon-pay-04.png" alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
+               <img src={iconPay01} alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
+               <img src={iconPay02} alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
+               <img src={iconPay03} alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
+               <img src={iconPay04} alt="Pay" style={{ height: '20px', filter: 'grayscale(1) brightness(2)' }} />
             </div>
           </div>
         </div>
