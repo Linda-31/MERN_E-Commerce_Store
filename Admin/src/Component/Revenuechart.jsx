@@ -12,7 +12,7 @@ const CustomerGrowthChart = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/users/");
+        const res = await axios.get("https://mern-store-server.onrender.com/api/users/");
         const users = res.data.users || res.data;
 
         setTotalUsers(users.length);

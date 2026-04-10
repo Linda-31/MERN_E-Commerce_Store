@@ -33,7 +33,7 @@ function UserEdit() {
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/users/${id}`)
+    axios.get(`https://mern-store-server.onrender.com/api/users/${id}`)
       .then(res => {
         setUserData(res.data);
         if (res.data.image) {
@@ -86,7 +86,7 @@ function UserEdit() {
         image: previewImage // attach base64 string or empty to clear
       };
 
-      await axios.put(`http://localhost:4000/api/users/${id}`, UpdateData);
+      await axios.put(`https://mern-store-server.onrender.com/api/users/${id}`, UpdateData);
       toast.success("User profile updated successfully");
       setTimeout(() => navigate(-1), 1500);
     } catch (err) {

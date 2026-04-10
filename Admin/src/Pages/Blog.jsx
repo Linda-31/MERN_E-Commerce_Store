@@ -14,7 +14,7 @@ const BlogList = () => {
 
     const fetchBlogs = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/blogs');
+            const response = await axios.get('https://mern-store-server.onrender.com/api/blogs');
             setBlogs(response.data.reverse());
         } catch (error) {
             console.error('Error fetching blogs:', error);
@@ -24,7 +24,7 @@ const BlogList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Archive this artisanal narrative?')) {
             try {
-                await axios.delete(`http://localhost:4000/api/blogs/delete/${id}`);
+                await axios.delete(`https://mern-store-server.onrender.com/api/blogs/delete/${id}`);
                 toast.success("Journal story archived");
                 fetchBlogs();
             } catch (error) {

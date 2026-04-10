@@ -43,7 +43,7 @@ function Login() {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:4000/api/users/login', {
+      const res = await axios.post('https://mern-store-server.onrender.com/api/users/login', {
         email,
         password: btoa(password),
       });

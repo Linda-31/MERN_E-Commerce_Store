@@ -12,7 +12,7 @@ function Product() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/products");
+      const response = await axios.get("https://mern-store-server.onrender.com/api/products");
       setProducts(response.data.reverse());
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -32,7 +32,7 @@ function Product() {
           if (searchQuery.trim() === "") {
             fetchProducts();
           } else {
-            const res = await axios.get(`http://localhost:4000/api/products/search?q=${searchQuery}`);
+            const res = await axios.get(`https://mern-store-server.onrender.com/api/products/search?q=${searchQuery}`);
             setProducts(res.data.reverse());
           }
         } catch (error) {
@@ -47,7 +47,7 @@ function Product() {
   const handleDelete = async (id) => {
     if (window.confirm("Archive this artisanal piece?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/products/${id}`);
+        await axios.delete(`https://mern-store-server.onrender.com/api/products/${id}`);
         setProducts((prev) => prev.filter((p) => p._id !== id));
         toast.success('Collection entry removed');
       } catch (error) {

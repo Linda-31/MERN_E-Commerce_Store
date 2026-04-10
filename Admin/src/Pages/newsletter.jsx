@@ -9,7 +9,7 @@ function NewsletterSubscribers() {
 
   const fetchSubscribers = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/newsletters');
+      const res = await axios.get('https://mern-store-server.onrender.com/api/newsletters');
       setSubscribers(res.data);
     } catch (err) {
       console.error("Error fetching subscribers:", err);
@@ -25,7 +25,7 @@ function NewsletterSubscribers() {
   const handleDelete = async (id) => {
     if (window.confirm("Remove this client from the newsletter list?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/newsletters/delete/${id}`);
+        await axios.delete(`https://mern-store-server.onrender.com/api/newsletters/delete/${id}`);
         toast.success("Subscriber removed from collection");
         setSubscribers(prev => prev.filter(s => s._id !== id));
       } catch (err) {

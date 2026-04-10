@@ -41,7 +41,7 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:4000/api/products/add", formData);
+            await axios.post("https://mern-store-server.onrender.com/api/products/add", formData);
             toast.success("Artisanal piece curated successfully");
             setFormData({
                 title: "", brandName: "", category: "", price: "",

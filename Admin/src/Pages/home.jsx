@@ -23,10 +23,10 @@ function Home() {
     const fetchDashboardData = async () => {
       try {
         const [ordersRes, usersRes, productsRes, subscribersRes] = await Promise.allSettled([
-          axios.get("http://localhost:4000/api/orders/all"),
-          axios.get("http://localhost:4000/api/users"),
-          axios.get("http://localhost:4000/api/products"),
-          axios.get("http://localhost:4000/api/newsletters"),
+          axios.get("https://mern-store-server.onrender.com/api/orders/all"),
+          axios.get("https://mern-store-server.onrender.com/api/users"),
+          axios.get("https://mern-store-server.onrender.com/api/products"),
+          axios.get("https://mern-store-server.onrender.com/api/newsletters"),
         ]);
 
         // --- Process Orders ---

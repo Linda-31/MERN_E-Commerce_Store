@@ -9,7 +9,7 @@ function ContactMessages() {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/contacts');
+      const res = await axios.get('https://mern-store-server.onrender.com/api/contacts');
       setMessages(res.data);
     } catch (err) {
       console.error("Error fetching messages:", err);
@@ -25,7 +25,7 @@ function ContactMessages() {
   const handleDelete = async (id) => {
     if (window.confirm("Archive this client inquiry?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/contacts/delete/${id}`);
+        await axios.delete(`https://mern-store-server.onrender.com/api/contacts/delete/${id}`);
         toast.success("Inquiry archived successfully");
         setMessages(prev => prev.filter(m => m._id !== id));
       } catch (err) {

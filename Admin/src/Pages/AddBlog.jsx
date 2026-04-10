@@ -42,7 +42,7 @@ const AddBlog = () => {
         try {
             const tagsArray = formData.tags.split(",").map(t => t.trim());
             const dataToSend = { ...formData, tags: tagsArray };
-            await axios.post("http://localhost:4000/api/blogs/save", dataToSend);
+            await axios.post("https://mern-store-server.onrender.com/api/blogs/save", dataToSend);
             toast.success("Journal article published successfully");
             navigate("/blogs");
         } catch (error) {

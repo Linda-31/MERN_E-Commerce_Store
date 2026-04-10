@@ -26,7 +26,7 @@ function ProductEdit() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/products/${id}`);
+        const res = await axios.get(`https://mern-store-server.onrender.com/api/products/${id}`);
         const data = res.data;
         setFormData({
           ...data,
@@ -80,7 +80,7 @@ function ProductEdit() {
       sizes: typeof formData.sizes === 'string' ? formData.sizes.split(",").map(size => size.trim()) : formData.sizes
     };
     try {
-      await axios.put(`http://localhost:4000/api/products/${id}`, updatedProduct);
+      await axios.put(`https://mern-store-server.onrender.com/api/products/${id}`, updatedProduct);
       toast.success("Artisanal curation updated");
       setTimeout(() => navigate('/product'), 1500);
     } catch (err) {

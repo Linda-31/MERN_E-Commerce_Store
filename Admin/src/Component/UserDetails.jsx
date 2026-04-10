@@ -8,7 +8,7 @@ function UserDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/users/${id}`)
+    axios.get(`https://mern-store-server.onrender.com/api/users/${id}`)
       .then(res => setUser(res.data))
       .catch(err => {
         console.error('Failed to fetch user details', err);

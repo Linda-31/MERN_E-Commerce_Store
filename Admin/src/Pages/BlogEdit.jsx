@@ -22,7 +22,7 @@ const BlogEdit = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const res = await axios.get(`http://localhost:4000/api/blogs/${id}`);
+                const res = await axios.get(`https://mern-store-server.onrender.com/api/blogs/${id}`);
                 const data = res.data;
                 setFormData({
                     ...data,
@@ -64,7 +64,7 @@ const BlogEdit = () => {
                 : formData.tags;
             const dataToSend = { ...formData, tags: tagsArray };
             
-            await axios.put(`http://localhost:4000/api/blogs/update/${id}`, dataToSend);
+            await axios.put(`https://mern-store-server.onrender.com/api/blogs/update/${id}`, dataToSend);
             toast.success("Journal article refined successfully");
             setTimeout(() => navigate("/blogs"), 1500);
         } catch (error) {

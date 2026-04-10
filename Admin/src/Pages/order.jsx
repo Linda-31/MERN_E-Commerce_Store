@@ -12,7 +12,7 @@ function Order() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/orders/all");
+      const response = await axios.get("https://mern-store-server.onrender.com/api/orders/all");
       setOrders(response.data);
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -32,7 +32,7 @@ function Order() {
           if (searchQuery.trim() === "") {
             fetchOrders();
           } else {
-            const res = await axios.get(`http://localhost:4000/api/orders/search?q=${searchQuery}`);
+            const res = await axios.get(`https://mern-store-server.onrender.com/api/orders/search?q=${searchQuery}`);
             setOrders(res.data);
           }
         } catch (error) {
@@ -47,7 +47,7 @@ function Order() {
   const handleDelete = async (orderId) => {
     if (window.confirm("Archive this boutique order?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/orders/${orderId}`);
+        await axios.delete(`https://mern-store-server.onrender.com/api/orders/${orderId}`);
         setOrders(prev => prev.filter(order => order._id !== orderId));
         toast.success("Order history updated");
       } catch (error) {

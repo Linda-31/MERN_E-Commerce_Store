@@ -10,7 +10,7 @@ function OrderDetail() {
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/orders/${id}`);
+        const response = await axios.get(`https://mern-store-server.onrender.com/api/orders/${id}`);
         setOrder(response.data);
       } catch (error) {
         console.error('Error fetching order details:', error);

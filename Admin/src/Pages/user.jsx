@@ -11,7 +11,7 @@ function User() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/users');
+      const res = await axios.get('https://mern-store-server.onrender.com/api/users');
       setUsers(res.data);
     } catch (err) {
       console.error("Error fetching users:", err);
@@ -29,7 +29,7 @@ function User() {
           if (searchQuery.trim() === "") {
             fetchUsers();
           } else {
-            const res = await axios.get(`http://localhost:4000/api/users/search?q=${searchQuery}`);
+            const res = await axios.get(`https://mern-store-server.onrender.com/api/users/search?q=${searchQuery}`);
             setUsers(res.data);
           }
         } catch (error) {
@@ -43,7 +43,7 @@ function User() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to remove this client from the curation?")) {
-      axios.delete(`http://localhost:4000/api/users/${id}`)
+      axios.delete(`https://mern-store-server.onrender.com/api/users/${id}`)
         .then(() => {
           setUsers(prev => prev.filter(user => user._id !== id));
           toast.success("Client profile archived");
