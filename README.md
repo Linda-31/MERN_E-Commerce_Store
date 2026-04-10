@@ -9,9 +9,8 @@ This project features a customer-facing store for browsing and purchasing fashio
 ---
 
 ## 🚀 Live Links
-* **Admin Dashboard:** [https://e-commerce-admin-aw4a.onrender.com](https://e-commerce-admin-aw4a.onrender.com)
-* **Backend API:** [https://mern-store-server.onrender.com](https://mern-store-server.onrender.com)
-* **Project Video:** [Watch on YouTube](https://youtu.be/IWwHxURuD9A)
+* **Project Live:** [Kushi_Store]((https://mern-e-commerce-store-je53.onrender.com)
+* **Admin:** [https://e-commerce-admin-aw4a.onrender.com](https://e-commerce-admin-aw4a.onrender.com)
 
 ---
 
@@ -50,20 +49,6 @@ This project features a customer-facing store for browsing and purchasing fashio
 
 ---
 
-## 🖼️ Project Gallery
-
-### Home Page
-<img width="100%" alt="Home Page" src="https://github.com/user-attachments/assets/1ab0a3d7-c121-4386-94ac-e9ee8f5c763c" />
-
-### Product Page
-<img width="100%" alt="Product Page" src="https://github.com/user-attachments/assets/a679eed2-a9d3-48dd-b0c7-d6d2a8fbc9aa" />
-
-### Cart Page
-<img width="100%" alt="Cart Page" src="https://github.com/user-attachments/assets/597a1cc1-3bdb-4da5-869e-965d4e595d67" />
-
-### Admin Dashboard
-<img width="100%" alt="Admin Page" src="https://github.com/user-attachments/assets/01f1caf7-1659-4fc6-afa1-67bfab92d8b6" />
-
 ---
 
 ## 🧾 Installation & Local Setup
@@ -93,7 +78,7 @@ cd ../Admin && npm install
 
 # Start Backend
 cd server
-npm run dev
+npm start
 
 # Start Admin Dashboard
 cd Admin
