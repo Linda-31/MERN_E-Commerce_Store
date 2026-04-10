@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function Order() {
   const navigate = useNavigate();
@@ -66,6 +67,8 @@ function Order() {
     }
   };
 
+  if (loading) return <Spinner />;
+
   return (
     <div className="order-management">
       <Toaster richColors position="top-right" />
@@ -100,9 +103,7 @@ function Order() {
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-              <tr><td colSpan="6" className="text-center py-5 text-muted">Retrieving order history...</td></tr>
-            ) : orders.length === 0 ? (
+            {orders.length === 0 ? (
                 <tr><td colSpan="6" className="text-center py-5 text-muted">No orders found in recent curation</td></tr>
             ) : (
               orders.map((order) => (

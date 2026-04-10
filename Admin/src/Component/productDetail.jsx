@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from './Spinner';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function ProductDetail() {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner />;
   if (!product) return <div>Product not found</div>;
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function NewsletterSubscribers() {
   const [subscribers, setSubscribers] = useState([]);
@@ -34,6 +35,8 @@ function NewsletterSubscribers() {
     }
   };
 
+  if (loading) return <Spinner />;
+
   return (
     <div className="newsletter-management">
       <Toaster richColors position="top-right" />
@@ -54,9 +57,7 @@ function NewsletterSubscribers() {
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-               <tr><td colSpan="4" className="text-center py-5 text-muted">Retrieving subscriber collection...</td></tr>
-            ) : subscribers.length === 0 ? (
+            {subscribers.length === 0 ? (
                <tr><td colSpan="4" className="text-center py-5 text-muted">No subscribers in the collection</td></tr>
             ) : (
               subscribers.map((sub) => (

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import '../Styles/style.css';
 import axios from "axios";
 import { toast, Toaster } from 'sonner';
+import Spinner from "../Component/Spinner";
 
 const AddProduct = () => {
     const [imagePreview, setImagePreview] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         title: "",
         brandName: "",
@@ -40,6 +42,7 @@ const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await axios.post("https://mern-store-server.onrender.com/api/products/add", formData);
             toast.success("Artisanal piece curated successfully");
@@ -51,8 +54,12 @@ const AddProduct = () => {
             setImagePreview(null);
         } catch (error) {
             toast.error("Failed to add product to collection");
+        } finally {
+            setLoading(false);
         }
     };
+
+    if (loading) return <Spinner />;
 
     return (
         <div className="add-product-page">

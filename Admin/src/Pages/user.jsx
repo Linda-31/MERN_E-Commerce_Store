@@ -3,9 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function User() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -15,6 +17,8 @@ function User() {
       setUsers(res.data);
     } catch (err) {
       console.error("Error fetching users:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,6 +55,8 @@ function User() {
         .catch(() => toast.error("Process failed"));
     }
   };
+
+  if (loading) return <Spinner />;
 
   return (
     <div className="user-management">

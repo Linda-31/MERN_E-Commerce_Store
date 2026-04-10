@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, Toaster } from "sonner";
+import Spinner from "./Spinner";
 
 function UserEdit() {
   const { id } = useParams();
@@ -11,6 +12,7 @@ function UserEdit() {
   const fileInputRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isVerySmall, setIsVerySmall] = useState(window.innerWidth < 576);
+  const [loading, setLoading] = useState(true);
 
   const [userData, setUserData] = useState({
     fullName: "",
@@ -45,7 +47,8 @@ function UserEdit() {
       .catch(err => {
         console.error("Failed to fetch user:", err);
         toast.error("User not found");
-      });
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
   const handleChange = (e) => {
@@ -94,6 +97,8 @@ function UserEdit() {
       toast.error("Failed to update user profile");
     }
   };
+
+  if (loading) return <Spinner />;
 
   return (
     <div style={{

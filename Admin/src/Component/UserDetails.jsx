@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from './Spinner';
 
 function UserDetails() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function UserDetails() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p className="text-center mt-5">Loading user data...</p>;
+  if (loading) return <Spinner />;
   if (!user) return <p className="text-center mt-5 text-danger">User not found</p>;
 
   return (

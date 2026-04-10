@@ -3,10 +3,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 const AddBlog = () => {
     const navigate = useNavigate();
     const [imagePreview, setImagePreview] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         title: "",
         category: "Fashion",
@@ -39,6 +41,7 @@ const AddBlog = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const tagsArray = formData.tags.split(",").map(t => t.trim());
             const dataToSend = { ...formData, tags: tagsArray };
@@ -47,8 +50,12 @@ const AddBlog = () => {
             navigate("/blogs");
         } catch (error) {
             toast.error("Failed to publish article");
+        } finally {
+            setLoading(false);
         }
     };
+
+    if (loading) return <Spinner />;
 
     return (
         <div className="add-blog-page">

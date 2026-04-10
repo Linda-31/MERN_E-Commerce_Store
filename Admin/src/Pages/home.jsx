@@ -4,6 +4,7 @@ import PieChart from "../Component/piechart";
 import SalesOverviewChart from '../Component/SalesOverviewChart';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Spinner from "../Component/Spinner";
 
 function Home() {
   const navigate = useNavigate();
@@ -108,6 +109,8 @@ function Home() {
     }
   };
 
+  if (loading) return <Spinner />;
+
   return (
     <div className="home-dashboard p-0 overflow-hidden">
       <div className="text-head">
@@ -200,9 +203,7 @@ function Home() {
                 </tr>
               </thead>
               <tbody>
-                {loading ? (
-                  <tr><td colSpan="5" className="text-center py-4 text-muted" style={{ fontSize: '13px' }}>Loading orders...</td></tr>
-                ) : recentOrders.length === 0 ? (
+                {recentOrders.length === 0 ? (
                   <tr><td colSpan="5" className="text-center py-4 text-muted" style={{ fontSize: '13px' }}>No orders found</td></tr>
                 ) : (
                   recentOrders.map((order) => {
@@ -249,9 +250,7 @@ function Home() {
               </button>
             </div>
             <div className="d-flex flex-column gap-3">
-              {loading ? (
-                <p className="text-center text-muted" style={{ fontSize: '13px' }}>Loading products...</p>
-              ) : topProducts.length === 0 ? (
+              {topProducts.length === 0 ? (
                 <p className="text-center text-muted" style={{ fontSize: '13px' }}>No products found</p>
               ) : (
                 topProducts.map((product) => (

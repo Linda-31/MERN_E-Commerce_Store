@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function ContactMessages() {
   const [messages, setMessages] = useState([]);
@@ -34,6 +35,8 @@ function ContactMessages() {
     }
   };
 
+  if (loading) return <Spinner />;
+
   return (
     <div className="contact-management">
       <Toaster richColors position="top-right" />
@@ -54,9 +57,7 @@ function ContactMessages() {
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-               <tr><td colSpan="4" className="text-center py-5 text-muted">Retrieving artisanal inquiries...</td></tr>
-            ) : messages.length === 0 ? (
+            {messages.length === 0 ? (
                <tr><td colSpan="4" className="text-center py-5 text-muted">No pending inquiries in the collection</td></tr>
             ) : (
               messages.map((msg) => (

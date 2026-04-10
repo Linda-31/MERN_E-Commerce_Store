@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 const BlogEdit = () => {
     const { id } = useParams();
@@ -72,7 +73,7 @@ const BlogEdit = () => {
         }
     };
 
-    if (loading) return <div className="p-5 text-center">RETRIEVING JOURNAL AUTHENTICITY...</div>;
+    if (loading) return <Spinner />;
 
     return (
         <div className="add-blog-page">

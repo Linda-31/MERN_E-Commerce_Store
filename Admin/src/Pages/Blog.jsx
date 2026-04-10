@@ -3,9 +3,11 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,6 +20,8 @@ const BlogList = () => {
             setBlogs(response.data.reverse());
         } catch (error) {
             console.error('Error fetching blogs:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -40,6 +44,8 @@ const BlogList = () => {
             default: return { color: '#666' };
         }
     };
+
+    if (loading) return <Spinner />;
 
     return (
         <div className="blog-management">

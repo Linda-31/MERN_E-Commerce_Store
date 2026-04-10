@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'sonner';
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function ProductEdit() {
   const { id } = useParams();
@@ -88,7 +89,7 @@ function ProductEdit() {
     }
   };
 
-  if (loading) return <div className="p-5 text-center">RETRIEVING ARTISANAL DETAILS...</div>;
+  if (loading) return <Spinner />;
 
   return (
     <div className="product-edit-page">

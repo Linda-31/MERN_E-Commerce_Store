@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Spinner from './Spinner';
 
 function OrderDetail() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function OrderDetail() {
     fetchOrderDetail();
   }, [id]);
 
-  if (loading) return <p>Loading order details...</p>;
+  if (loading) return <Spinner />;
   if (!order) return <p>Order not found.</p>;
 
   return (

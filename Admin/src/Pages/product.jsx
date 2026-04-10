@@ -3,6 +3,7 @@ import { toast, Toaster } from 'sonner';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../Styles/style.css';
+import Spinner from "../Component/Spinner";
 
 function Product() {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ function Product() {
     }
   };
 
-  if (loading) return <div className="p-5 text-center">CURATING COLLECTION...</div>;
+  if (loading) return <Spinner />;
 
   return (
     <div className="product-management">
