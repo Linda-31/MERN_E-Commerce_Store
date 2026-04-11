@@ -40,11 +40,28 @@ const AddProduct = () => {
         }
     };
 
+    const getToken = () => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; token=`);
+        if (parts.length === 2) {
+            try {
+                const userData = JSON.parse(atob(parts.pop().split(';').shift()));
+                return userData.token;
+            } catch (e) { return null; }
+        }
+        return null;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post("https://mern-store-server.onrender.com/api/products/add", formData);
+             const config = {
+                headers: {
+                    Authorization: `Bearer ${getToken()}`
+                }
+            };
+            await axios.post("https://mern-store-server.onrender.com/api/products/add", formData, config);
             toast.success("Artisanal piece curated successfully");
             setFormData({
                 title: "", brandName: "", category: "", price: "",

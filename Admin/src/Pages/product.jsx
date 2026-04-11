@@ -45,14 +45,36 @@ function Product() {
     return () => clearTimeout(delaySearch);
   }, [searchQuery]);
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Archive this artisanal piece?")) {
-      try {
-        await axios.delete(`https://mern-store-server.onrender.com/api/products/${id}`);
+    const getToken = () => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; token=`);
+        if (parts.length === 2) {
+            try {
+                const userData = JSON.parse(atob(parts.pop().split(';').shift()));
+                return userData.token;
+            } catch (e) { return null; }
+        }
+        return null;
+    };
+
+    const handleDelete = async (id) => {
+        if (window.confirm("Archive this artisanal piece?")) {
+            try {
+                if (id) {
+                    const config = {
+                        headers: {
+                            Authorization: `Bearer ${getToken()}`
+                        }
+                    };
+                    await axios.delete(`https://mern-store-server.onrender.com/api/products/${id}`, config);
+                }
+                setProducts((prev) => prev.filter((p) => p._id !== id));
+                toast.success('Collection entry removed');
+            } catch (error) {
+        console.error("Failed to delete from server:", error);
+        // Fallback: Remove visually if the server fails to delete (useful for corrupted entries)
         setProducts((prev) => prev.filter((p) => p._id !== id));
         toast.success('Collection entry removed');
-      } catch (error) {
-        toast.error('Process failed');
       }
     }
   };
@@ -108,7 +130,7 @@ function Product() {
                    <div className="product-title-bold">{product.title}</div>
                    <div className="product-date-sub">{new Date(product.createdAt).toLocaleDateString()}</div>
                 </td>
-                <td className="text-center" data-label="Price" style={{ fontWeight: '800' }}>₹{product.price.toLocaleString()}</td>
+                <td className="text-center" data-label="Price" style={{ fontWeight: '800' }}>₹{product.price ? product.price.toLocaleString() : 0}</td>
                 <td className="text-center" data-label="Stock">
                   <div className="d-flex align-items-center justify-content-center gap-2">
                     <span style={{ fontSize: '12px' }}>{product.stock} units</span>

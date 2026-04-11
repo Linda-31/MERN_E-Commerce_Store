@@ -75,9 +75,9 @@ function ProductDetail() {
             <h1 className="product-title-detail" style={{ fontWeight: '900', color: '#000', marginBottom: '20px', letterSpacing: '-1px' }}>{product.title}</h1>
             
             <div className="d-flex align-items-baseline gap-3 mb-4">
-               <span style={{ fontSize: '28px', fontWeight: '900', color: '#000' }}>₹{product.price.toLocaleString('en-IN')}</span>
+               <span style={{ fontSize: '28px', fontWeight: '900', color: '#000' }}>₹{product.price ? product.price.toLocaleString('en-IN') : 0}</span>
                {product.originalPrice > product.price && (
-                  <span className="text-muted text-decoration-line-through">₹{product.originalPrice.toLocaleString('en-IN')}</span>
+                  <span className="text-muted text-decoration-line-through">₹{product.originalPrice ? product.originalPrice.toLocaleString('en-IN') : 0}</span>
                )}
             </div>
 
