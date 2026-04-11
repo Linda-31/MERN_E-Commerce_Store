@@ -14,9 +14,6 @@ This project features a customer-facing store for browsing and purchasing fashio
 * **Backend Server** [https://mern-store-server.onrender.com](https://mern-store-server.onrender.com) 
 
 ---
-
-## ✨ Features
-
 ## ✨ Features
 
 - 🔒 **JWT Authentication** — Secure, stateless user sessions using **JSON Web Tokens** with industry-standard password encryption via **Bcrypt.js**.
