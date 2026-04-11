@@ -17,13 +17,18 @@ This project features a customer-facing store for browsing and purchasing fashio
 
 ## ✨ Features
 
-- 🔒 **JWT Authentication** — Secure login and logout using **JSON Web Tokens**.
-- 🧭 **Responsive Design** — Fully responsive layout built with **Bootstrap & CSS**.
-- 🛍️ **Cart, Wishlist & Order Management** — Add, update, or remove products easily.
-- 💳 **Secure Payment Integration** — Supports **GPay**, **UPI**, and **Credit/Debit Cards**.
-- 📈 **Admin Dashboard** — Track orders, manage inventory, and view **sales insights**.
-- 🔄 **CRUD Operations** — Full control over products and user data.
-- 🧩 **Real-time API Updates** — Seamless frontend-backend communication via **Axios**.
+## ✨ Features
+
+- 🔒 **JWT Authentication** — Secure, stateless user sessions using **JSON Web Tokens** with industry-standard password encryption via **Bcrypt.js**.
+- 🌐 **Global State Management** — Seamlessly **managing global cart and wishlist states** using **Redux Toolkit (@reduxjs/toolkit)**, ensuring high-performance data synchronization across the entire shop.
+- 🎭 **Dynamic Visuals & Animations** — A highly interactive UI powered by **Framer Motion** and **GSAP** for fluid, professional transitions and an "app-like" user experience.
+- 💳 **Hybrid Payment Gateway** — Fully integrated checkout supporting **Stripe** and **Razorpay** for global transactions, including **GPay**, **UPI**, and **Credit/Debit Cards**.
+- 📊 **Advanced Admin Analytics** — A professional administrative dashboard featuring complex sales trends and inventory visualization via **Chart.js** and **Recharts**.
+- 🔔 **Modern Notifications** — Sleek, non-intrusive toast alerts via **Sonner** for real-time user feedback on cart updates and authentication.
+- 🧭 **Seamless Navigation** — Optimized Single-Page Application (SPA) architecture using **React Router Dom** for instant, reload-free page transitions.
+- 🧩 **Robust CRUD & API** — Full-scale RESTful API communication via **Axios** with structured **Mongoose** schemas for reliable data persistence.
+- 📱 **Responsive** — Fully adaptive layout built with **Bootstrap 5** and custom **CSS** for a pixel-perfect experience across all devices.
+
 
 ---
 
