@@ -40,13 +40,16 @@ This project features a customer-facing store for browsing and purchasing fashio
 | **Deployment** | Render (Frontend & Backend) |
 
 ---
+**UI View**
+<h1>Home</h1>
 <img width="1786" height="868" alt="Image" src="https://github.com/user-attachments/assets/c3b01bef-5bc5-46f4-a5dc-00875ac7fb8e" />
 
+<h1>Cart</h1>
 <img width="1793" height="898" alt="Image" src="https://github.com/user-attachments/assets/416e299e-9cb5-42c7-9949-b70db5539a61" />
 
-<img width="1858" height="891" alt="Image" src="https://github.com/user-attachments/assets/839db472-bf52-48b4-888c-a468d0a68319" />
-
+<h1>Admin DashBoard</h1>
 <img width="1873" height="887" alt="Image" src="https://github.com/user-attachments/assets/9bbf13c9-d17b-471a-8b28-f095183377cd" />
+
 ---
 ## ⚙️ Project Workflow
 
