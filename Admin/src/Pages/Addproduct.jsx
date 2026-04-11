@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../Styles/style.css';
 import axios from "axios";
 import { toast, Toaster } from 'sonner';
 import Spinner from "../Component/Spinner";
 
 const AddProduct = () => {
+    const navigate = useNavigate();
     const [imagePreview, setImagePreview] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -61,8 +63,16 @@ const AddProduct = () => {
                     Authorization: `Bearer ${getToken()}`
                 }
             };
-            await axios.post("https://mern-store-server.onrender.com/api/products/add", formData, config);
-            toast.success("Artisanal piece curated successfully");
+            const payload = {
+                ...formData,
+                price: Number(formData.price),
+                originalPrice: formData.originalPrice ? Number(formData.originalPrice) : Number(formData.price),
+                stock: Number(formData.stock),
+                sizes: typeof formData.sizes === 'string' ? formData.sizes.split(',').map(s => s.trim()).filter(Boolean) : ["Standard"],
+            };
+
+            await axios.post("https://mern-store-server.onrender.com/api/products/add", payload, config);
+            toast.success("Product added successfully");
             setFormData({
                 title: "", brandName: "", category: "", price: "",
                 originalPrice: "", color: "", sizes: "", stock: "",
@@ -76,15 +86,27 @@ const AddProduct = () => {
         }
     };
 
-    if (loading) return <Spinner />;
-
     return (
-        <div className="add-product-page">
+        <>
             <Toaster richColors position="top-right" />
-            <div className="text-head">
-                CURATE NEW PIECE
-                <span className="d-none d-sm-inline">Artisanal Inventory Curation</span>
-            </div>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <div className="add-product-page">
+                    <div className="text-head">
+                        <div>
+                            CURATE NEW PIECE
+                            <span className="d-block mt-1 mt-md-0 d-md-inline ms-md-3">Artisanal Inventory Curation</span>
+                        </div>
+                        <button 
+                            className="btn btn-sm btn-outline-dark border-0 mt-2 mt-md-0" 
+                            type="button"
+                            onClick={() => navigate('/product')}
+                            style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1px' }}
+                        >
+                            ← BACK
+                        </button>
+                    </div>
 
             <div className="admin-form-container mx-auto">
                 <form onSubmit={handleSubmit}>
@@ -146,28 +168,36 @@ const AddProduct = () => {
                                 </div>
                                 <div className="col-6 mb-4">
                                     <label className="form-label">Color Palette</label>
-                                    <input type="text" name="color" className="form-control" placeholder="E.G. NOIR" value={formData.color} onChange={handleInputChange} />
+                                    <input type="text" name="color" className="form-control" placeholder="E.G. NOIR" value={formData.color} onChange={handleInputChange} required />
                                 </div>
                             </div>
 
-                            <div className="mb-4">
-                                <label className="form-label">Brand Signature</label>
-                                <input type="text" name="brandName" className="form-control" placeholder="KUSHI" value={formData.brandName} onChange={handleInputChange} />
+                            <div className="row">
+                                <div className="col-6 mb-4">
+                                    <label className="form-label">Brand Signature</label>
+                                    <input type="text" name="brandName" className="form-control" placeholder="KUSHI" value={formData.brandName} onChange={handleInputChange} required />
+                                </div>
+                                <div className="col-6 mb-4">
+                                    <label className="form-label">Atelier Sizes</label>
+                                    <input type="text" name="sizes" className="form-control" placeholder="E.G. S, M, L" value={formData.sizes} onChange={handleInputChange} required />
+                                </div>
                             </div>
                         </div>
 
                         <div className="col-12 mt-4">
                             <label className="form-label">Artisanal Story (Description)</label>
-                            <textarea name="description" className="form-control" rows={4} placeholder="Describe the craftsmanship and soul of this piece..." value={formData.description} onChange={handleInputChange}></textarea>
+                            <textarea name="description" className="form-control" rows={4} placeholder="Describe the craftsmanship and soul of this piece..." value={formData.description} onChange={handleInputChange} required></textarea>
                         </div>
 
                         <div className="col-12 mt-5">
-                            <button type="submit" className="btn-admin btn-admin-primary w-100">CURATE COLLECTION PIECE</button>
+                            <button type="submit" className="btn-admin btn-admin-primary w-100">ADD COLLECTION PIECE</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+        )}
+        </>
     );
 };
 

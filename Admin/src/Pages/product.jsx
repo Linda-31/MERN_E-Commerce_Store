@@ -100,7 +100,7 @@ function Product() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button className="btn-admin btn-admin-primary w-100" style={{ padding: '8px 20px', fontSize: '11px' }} onClick={() => navigate("/add-product")}>
-            + curated piece
+            + Add product
           </button>
         </div>
       </div>
